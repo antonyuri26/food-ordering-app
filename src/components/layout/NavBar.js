@@ -15,13 +15,10 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import logo from "../../assets/images/Logo_hungry.png";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { IconContext } from "react-icons";
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -59,8 +56,8 @@ const NavBar = () => {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
-            pr={"10rem"}
-            pl={"15.5rem"}
+            pr={"25rem"}
+            pl={"3rem"}
           >
             <Image src={logo} alt="Hungry Logo" w={"130px"} minW={"100px"} />
           </Text>
@@ -76,14 +73,21 @@ const NavBar = () => {
           direction={"row"}
           spacing={6}
         >
-          {/* <Button shopping cart icon here
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}>
-            Sign In
-          </Button> */}
+          <IconContext.Provider
+            value={{
+              color: "rgb(211,28,39)",
+              className: "global-class-name",
+              size: "30px",
+              style: { verticalAlign: "middle" },
+            }}
+          >
+            <div style={{ paddingTop: "5px" }}>
+              <button>
+                <AiOutlineShoppingCart />
+              </button>
+            </div>
+          </IconContext.Provider>
+          ;
           <Button
             as={"a"}
             display={{ base: "none", md: "inline-flex" }}

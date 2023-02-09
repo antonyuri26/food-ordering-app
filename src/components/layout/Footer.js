@@ -94,9 +94,10 @@ const Footer = () => {
       color={useColorModeValue("gray.700", "gray.200")}
       style={{ borderRadius: "0 0 7px 7px" }}
     >
-      <Container as={Stack} maxW={"70%"} py={10}>
+      <Container as={Stack} maxW={"92%"} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: "2fr 1fr", md: "2fr 2fr 1fr 1fr 2fr" }}
+          templateColumns={{ sm: "2fr 1fr", md: "2fr 1.3fr 1fr 1fr 2fr" }}
+          // templateColumns={{ sm: "2fr 1fr", md: "2fr 1.3fr 1fr 1fr 2fr" }}
           // templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
           spacing={8}
         >

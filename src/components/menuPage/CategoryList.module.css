@@ -1,0 +1,4 @@
+/* Fix first image padding issue on menu page */
+.imagem:nth-last-of-type(14) {
+  margin-left: 8px;
+}
