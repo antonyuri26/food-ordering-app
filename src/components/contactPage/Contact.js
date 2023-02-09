@@ -1,7 +1,8 @@
 import React from "react";
+import { Heading } from "@chakra-ui/react";
 
 const Contact = () => {
-  return <h1>Contact</h1>;
+  return <Heading>Contact</Heading>;
 };
 
 export default Contact;

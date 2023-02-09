@@ -10,8 +10,12 @@ import About from "./components/aboutPage/About";
 import Contact from "./components/contactPage/Contact";
 import ErrorPage from "./components/errorPage/ErrorPage";
 import RootLayout from "./components/layout/RootLayout";
+import SignIn from "./components/auth/SignIn";
+import Register from "./components/auth/Register";
+import Cart from "./components/cartPage/Cart";
+import CheckOut from "./components/checkoutPage/CheckOut";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Container } from "@chakra-ui/react";
 
 //creating routes
 const router = createBrowserRouter([
@@ -27,6 +31,10 @@ const router = createBrowserRouter([
       { path: "/menu", element: <MenuPage /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/signin", element: <SignIn /> },
+      { path: "/register", element: <Register /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/checkout", element: <CheckOut /> },
     ],
   },
 ]);
@@ -34,7 +42,18 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <RouterProvider router={router} />
+      <Container
+        maxW="95%"
+        mt={"2.2%"}
+        style={{
+          borderRadius: "10px 10px 0 0",
+          paddingLeft: "0",
+          paddingRight: "0",
+        }}
+      >
+        <Fonts />
+        <RouterProvider router={router} />
+      </Container>
     </ChakraProvider>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
+import { Heading } from "@chakra-ui/react";
 
 const About = () => {
-  return <h1>About</h1>;
+  return <Heading>About</Heading>;
 };
 
 export default About;
