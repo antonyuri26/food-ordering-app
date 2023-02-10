@@ -3,6 +3,7 @@ import Fonts from "./theme/Fonts";
 import theme from "./theme/theme";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+import { ChakraProvider, Container } from "@chakra-ui/react";
 
 import HomePage from "./components/homePage/HomePage";
 import MenuPage from "./components/menuPage/MenuPage";
@@ -14,8 +15,9 @@ import SignIn from "./components/auth/SignIn";
 import Register from "./components/auth/Register";
 import Cart from "./components/cartPage/Cart";
 import CheckOut from "./components/checkoutPage/CheckOut";
+import MealsPage from "./components/mealsPage/MealsPage";
 
-import { ChakraProvider, Container } from "@chakra-ui/react";
+import { loader as mealsLoader } from "./components/mealsPage/MealsPage";
 
 //creating routes
 const router = createBrowserRouter([
@@ -28,7 +30,15 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
-      { path: "/menu", element: <MenuPage /> },
+      {
+        path: "/menu",
+        element: <MenuPage />,
+      },
+      {
+        path: "/menu/:categoryId",
+        element: <MealsPage />,
+        loader: mealsLoader,
+      },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/signin", element: <SignIn /> },

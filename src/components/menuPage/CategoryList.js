@@ -14,13 +14,13 @@ const CategoryList = (props) => {
       columnGap={"0.5rem"}
       marginY={"1rem"}
     >
-      {props.meals.map((meal) => (
+      {props.categories.map((category) => (
         <Image
           boxSize="250px"
           objectFit="cover"
-          src={meal.image}
-          alt={meal.category}
-          key={meal.id}
+          src={category.image}
+          alt={category.category}
+          key={category.id}
           border={"1px solid rgb(211,28,39)"}
           borderRadius={"5px"}
           className={classes.imagem}

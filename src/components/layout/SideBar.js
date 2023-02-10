@@ -6,27 +6,28 @@ import {
   Flex,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
+  Link,
   DrawerContent,
   Text,
   useDisclosure,
   Divider,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
+import { Link as ReactLink } from "react-router-dom";
 
 const LinkItems = [
-  { name: "Beef", link: "#" },
-  { name: "Chicken", link: "#" },
-  { name: "Lamb", link: "#" },
-  { name: "Pork", link: "#" },
-  { name: "Goat", link: "#" },
-  { name: "Pasta", link: "#" },
-  { name: "Seafood", link: "#" },
-  { name: "Side", link: "#" },
-  { name: "Vegetarian", link: "#" },
-  { name: "Breakfast", link: "#" },
-  { name: "Dessert", link: "#" },
+  { name: "Beef", url: "beef" },
+  { name: "Chicken", url: "chicken" },
+  { name: "Lamb", url: "lamb" },
+  { name: "Pork", url: "pork" },
+  { name: "Goat", url: "goat" },
+  { name: "Pasta", url: "pasta" },
+  { name: "Seafood", url: "seafood" },
+  { name: "Side", url: "side" },
+  { name: "Vegetarian", url: "vegetarian" },
+  { name: "Breakfast", url: "breakfast" },
+  { name: "Dessert", url: "dessert" },
 ];
 
 export default function SideBar({ children }) {
@@ -35,7 +36,7 @@ export default function SideBar({ children }) {
     <Box
       minH="100vh"
       bg={useColorModeValue("white.100", "gray.900")}
-      w={"11rem"}
+      w={"14rem"}
       paddingLeft={"3rem"}
     >
       <SidebarContent
@@ -82,12 +83,17 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <>
-          <NavItem key={link.name} icon={link.icon}>
-            {link.name}
-          </NavItem>
-          <Divider orientation="horizontal" />
-        </>
+        <Link
+          as={ReactLink}
+          to={`/menu/${link.url}`}
+          key={link.name}
+          _hover={{
+            textDecoration: "none",
+          }}
+        >
+          <NavItem icon={link.icon}>{link.name}</NavItem>
+        </Link>
+        // <Divider orientation="horizontal" w={"200px"} />
       ))}
     </Box>
   );
@@ -105,6 +111,8 @@ const NavItem = ({ icon, children, ...rest }) => {
         p="4"
         mx="4"
         borderRadius="lg"
+        borderBottom={"1px solid"}
+        borderColor={useColorModeValue("gray.200", "gray.700")}
         role="group"
         cursor="pointer"
         _hover={{
@@ -136,7 +144,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("rgb(224,217,217)", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="flex-start"
@@ -149,9 +157,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
         icon={<FiMenu />}
       />
 
-      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
+      {/* <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
         Logo
-      </Text>
+      </Text> */}
     </Flex>
   );
 };

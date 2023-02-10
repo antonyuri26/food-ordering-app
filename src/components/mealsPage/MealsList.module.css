@@ -1,0 +1,5 @@
+/* Fix first image padding issue on menu page */
+
+.cardFix:first-child {
+  margin-left: 10px;
+}

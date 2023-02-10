@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Flex, Spinner } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 import CategoryList from "./CategoryList";
-import SideBar from "../layout/SideBar";
+import CategoryWrapper from "./CategoryWrapper";
 
 const MenuPage = () => {
-  const [meals, setMeals] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,6 +15,7 @@ const MenuPage = () => {
       const response = await fetch(
         "https://www.themealdb.com/api/json/v1/1/categories.php"
       );
+      console.log(response);
 
       if (!response.ok) {
         throw new Error("Something Went Wrong. Please Try again.");
@@ -29,7 +30,7 @@ const MenuPage = () => {
           image: item.strCategoryThumb,
         };
       });
-      setMeals(dataFetched);
+      setCategories(dataFetched);
       setIsLoading(false);
     } catch (error) {
       setError(error.message);
@@ -43,8 +44,8 @@ const MenuPage = () => {
 
   let content = <p>Found No Meal</p>;
 
-  if (meals.length) {
-    content = <CategoryList meals={meals} />;
+  if (categories.length) {
+    content = <CategoryList categories={categories} />;
   }
 
   if (error) {
@@ -59,15 +60,7 @@ const MenuPage = () => {
     );
   }
 
-  return (
-    <Flex background={"rgb(224,217,217)"}>
-      {/* <Box marginRight={"1rem"}> */}
-      {/* <Heading>Menu Page</Heading> */}
-      <SideBar />
-      {/* </Box> */}
-      {content}
-    </Flex>
-  );
+  return <CategoryWrapper content={content} />;
 };
 
 export default MenuPage;
