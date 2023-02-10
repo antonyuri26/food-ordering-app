@@ -1,0 +1,33 @@
+.row {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qty {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image {
+  width: 50px;
+}
+
+.total,
+.subtotal,
+.tax,
+.shipping {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.total_box {
+  margin-top: 1rem;
+}
+
+.total {
+  background-color: rgb(242, 242, 242);
+}

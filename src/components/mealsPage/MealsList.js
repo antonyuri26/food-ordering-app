@@ -15,6 +15,10 @@ import classes from "./MealsList.module.css";
 
 // props.meals
 const MealsList = (props) => {
+  const addToCartHandler = (id) => {
+    console.log(id);
+  };
+
   return (
     <>
       <Stack
@@ -47,6 +51,7 @@ const MealsList = (props) => {
                   colorScheme="red"
                   variant="outline"
                   color={"rgb(211,28,39)"}
+                  onClick={() => addToCartHandler(meal.id)}
                 >
                   + Add to cart
                 </Button>

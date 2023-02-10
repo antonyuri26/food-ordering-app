@@ -13,9 +13,9 @@ import ErrorPage from "./components/errorPage/ErrorPage";
 import RootLayout from "./components/layout/RootLayout";
 import SignIn from "./components/auth/SignIn";
 import Register from "./components/auth/Register";
-import Cart from "./components/cartPage/Cart";
-import CheckOut from "./components/checkoutPage/CheckOut";
+import Checkout from "./components/checkoutPage/Checkout";
 import MealsPage from "./components/mealsPage/MealsPage";
+import CartPreview from "./components/checkoutPage/CartPreview";
 
 import { loader as mealsLoader } from "./components/mealsPage/MealsPage";
 
@@ -43,8 +43,8 @@ const router = createBrowserRouter([
       { path: "/contact", element: <Contact /> },
       { path: "/signin", element: <SignIn /> },
       { path: "/register", element: <Register /> },
-      { path: "/cart", element: <Cart /> },
-      { path: "/checkout", element: <CheckOut /> },
+      // { path: "/cart", element: <CartPreview /> },
+      { path: "/checkout", element: <Checkout /> },
     ],
   },
 ]);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -17,11 +17,16 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import logo from "../../assets/images/Logo_hungry.png";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { IconContext } from "react-icons";
+
+import CartPreview from "../checkoutPage/CartPreview";
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const cartPreviewToggler = () => {
+    setIsCartOpen(true);
+  };
 
   return (
     <Box>
@@ -73,21 +78,9 @@ const NavBar = () => {
           direction={"row"}
           spacing={6}
         >
-          <IconContext.Provider
-            value={{
-              color: "rgb(211,28,39)",
-              className: "global-class-name",
-              size: "30px",
-              style: { verticalAlign: "middle" },
-            }}
-          >
-            <div style={{ paddingTop: "5px" }}>
-              <button>
-                <AiOutlineShoppingCart />
-              </button>
-            </div>
-          </IconContext.Provider>
-          ;
+          <div style={{ paddingTop: "5px" }}>
+            <CartPreview />
+          </div>
           <Button
             as={"a"}
             display={{ base: "none", md: "inline-flex" }}
