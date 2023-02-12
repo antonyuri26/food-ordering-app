@@ -1,6 +1,8 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { useSelector } from "react-redux";
 import classes from "./FormCheckout.module.css";
 import {
   FaRegUser,
@@ -14,29 +16,97 @@ import {
 } from "react-icons/fa";
 
 const FormCheckout = () => {
+  const navigate = useNavigate();
+
+  const fullName = useRef();
+  const email = useRef();
+  const address = useRef();
+  const city = useRef();
+  const state = useRef();
+  const postcode = useRef();
+  const nameCard = useRef();
+  const creditCardNumber = useRef();
+  const expMonth = useRef();
+  const expYear = useRef();
+  const cvv = useRef();
+
+  const order = useSelector((state) => state.cart.items);
+
+  async function fetchDataToServer(orderDetails) {
+    try {
+      const response = await fetch(
+        "https://food-app-b3cbe-default-rtdb.asia-southeast1.firebasedatabase.app/order.json",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            orderDetails,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error("Error Ehile trying submitt your order");
+      }
+    } catch (error) {
+      console.log(Error);
+    }
+  }
+
+  const orderSubmitHandler = (event) => {
+    event.preventDefault();
+
+    const orderDetails = {
+      customerDetails: {
+        fullName: fullName.current.value,
+        email: email.current.value,
+        address: address.current.value,
+        city: city.current.value,
+        state: state.current.value,
+        postcode: postcode.current.value,
+      },
+      cardDetails: {
+        nameCard: nameCard.current.value,
+        creditCardNumber: creditCardNumber.current.value,
+        expMonth: expMonth.current.value,
+        expYear: expYear.current.value,
+        cvv: cvv.current.value,
+      },
+      orderDetails: order,
+    };
+
+    fetchDataToServer(orderDetails);
+    // console.log(orderDetails);
+  };
+
   return (
     // <div className={classes.row}>
     <div className={classes.col_50}>
       <div className={classes.container}>
-        <Form>
+        <Form onSubmit={orderSubmitHandler}>
           <div className={classes.row}>
             <div className={classes.col_25}>
               <Text fontSize={"xl"} my={"1rem"}>
-                Billing Address
+                Shipping Address
               </Text>
 
               <span className={classes.icon_container}>
                 <FaRegUser />
               </span>
-              <label htmlFor="fname" className={classes.icon_container}>
+              <label htmlFor="fullname" className={classes.icon_container}>
                 Full Name
               </label>
 
               <input
                 type="text"
-                id="fname"
-                name="firstname"
+                id="fullname"
+                name="fullname"
                 placeholder="Your name"
+                ref={fullName}
               />
               <span className={classes.icon_container}>
                 <FaRegEnvelope />
@@ -49,18 +119,20 @@ const FormCheckout = () => {
                 id="email"
                 name="email"
                 placeholder="test@example.com"
+                ref={email}
               />
               <span className={classes.icon_container}>
                 <FaAddressCard />
               </span>
-              <label htmlFor="adr" className={classes.icon_container}>
+              <label htmlFor="address" className={classes.icon_container}>
                 Address
               </label>
               <input
                 type="text"
-                id="adr"
+                id="address"
                 name="address"
                 placeholder="123 name Street"
+                ref={address}
               />
               <span className={classes.icon_container}>
                 <FaCity />
@@ -73,6 +145,7 @@ const FormCheckout = () => {
                 id="city"
                 name="city"
                 placeholder="City Name"
+                ref={city}
               />
 
               <div className={classes.row}>
@@ -83,11 +156,18 @@ const FormCheckout = () => {
                     id="state"
                     name="state"
                     placeholder="QLD"
+                    ref={state}
                   />
                 </div>
                 <div className={classes.col_25}>
                   <label htmlFor="zip">Postcode</label>
-                  <input type="text" id="zip" name="zip" placeholder="4551" />
+                  <input
+                    type="text"
+                    id="zip"
+                    name="zip"
+                    placeholder="4551"
+                    ref={postcode}
+                  />
                 </div>
               </div>
             </div>
@@ -123,6 +203,7 @@ const FormCheckout = () => {
                 id="cname"
                 name="cardname"
                 placeholder="John More Doe"
+                ref={nameCard}
               />
               <label htmlFor="ccnum">Credit card number</label>
               <input
@@ -130,6 +211,7 @@ const FormCheckout = () => {
                 id="ccnum"
                 name="cardnumber"
                 placeholder="1111-2222-3333-4444"
+                ref={creditCardNumber}
               />
               <label htmlFor="expmonth">Exp Month</label>
               <input
@@ -137,6 +219,7 @@ const FormCheckout = () => {
                 id="expmonth"
                 name="expmonth"
                 placeholder="September"
+                ref={expMonth}
               />
 
               <div className={classes.row}>
@@ -147,11 +230,18 @@ const FormCheckout = () => {
                     id="expyear"
                     name="expyear"
                     placeholder="2018"
+                    ref={expYear}
                   />
                 </div>
                 <div className={classes.col_50}>
                   <label htmlFor="cvv">CVV</label>
-                  <input type="text" id="cvv" name="cvv" placeholder="352" />
+                  <input
+                    type="text"
+                    id="cvv"
+                    name="cvv"
+                    placeholder="352"
+                    ref={cvv}
+                  />
                 </div>
               </div>
             </div>
@@ -162,6 +252,7 @@ const FormCheckout = () => {
               ariant="outline"
               type="submit"
               value="Continue to checkout"
+              onClick={() => navigate("/menu")}
               //   className={classes.btn}
             >
               Back to Menu

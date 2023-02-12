@@ -1,37 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Text } from "@chakra-ui/react";
-import classes from "./FormCheckout.module.css";
+import { useSelector } from "react-redux";
+
+import classes from "./CheckoutCart.module.css";
+
+import CartPreviewItems from "./CartPreviewItems";
 
 const CheckoutCart = () => {
+  const cartNotifQty = useSelector((state) => state.cart.totalQty);
+
   return (
     <div className={classes.col_35}>
       <div className={classes.container}>
-        <Text fontSize="3xl">Summary (1) Items</Text>
+        <Text fontSize="3xl">Summary ({cartNotifQty}) Items</Text>
 
-        <Text fontSize="md">
-          <Link to="/">Product 1</Link>
-          <span className={classes.price}>$15</span>
-        </Text>
-        <Text fontSize="md">
-          <Link to="/">Product 2</Link>
-          <span className={classes.price}>$5</span>
-        </Text>
-        <Text fontSize="md">
-          <Link to="/">Product 3</Link>
-          <span className={classes.price}>$8</span>
-        </Text>
-        <Text fontSize="md">
-          <Link to="/">Product 4</Link>
-          <span className={classes.price}>$2</span>
-        </Text>
-        <hr />
-        <Text fontSize="md">
-          Total
-          <span className={classes.price}>
-            <b>$30</b>
-          </span>
-        </Text>
+        {/* list of items starts from here */}
+        <CartPreviewItems />
       </div>
     </div>
   );
