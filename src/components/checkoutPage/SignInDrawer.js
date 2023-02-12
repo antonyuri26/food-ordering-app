@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -13,19 +14,46 @@ import {
   Box,
   FormControl,
   FormLabel,
-  Checkbox,
   Stack,
-  Link,
   useColorModeValue,
+  Text,
+  Link,
+  Checkbox,
+  Flex,
+  Heading,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 
+import { Formik, Form, Field } from "formik";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store";
+
 function SignInDrawer(props) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const dispatch = useDispatch();
 
   const closeDrawer = () => {
     props.closeDrawer(false);
   };
+
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = "Required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = "Invalid email address";
+    }
+    return error;
+  }
+
+  function validatePassword(value) {
+    let error;
+    if (!value) {
+      error = "Required";
+    }
+    return error;
+  }
 
   return (
     <>
@@ -38,45 +66,144 @@ function SignInDrawer(props) {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Sign in to your account</DrawerHeader>
+          {/* <DrawerHeader>Sign in to your account</DrawerHeader> */}
 
           <DrawerBody>
-            <Box
-              rounded={"lg"}
+            <Stack
+              spacing={4}
+              w={"full"}
+              maxW={"md"}
+              height={"500px"}
               bg={useColorModeValue("white", "gray.700")}
-              boxShadow={"lg"}
-              p={8}
+              rounded={"xl"}
+              p={6}
+              my={10}
             >
-              <Stack spacing={4}>
-                <FormControl id="email">
-                  <FormLabel>Email address</FormLabel>
-                  <Input type="email" />
-                </FormControl>
-                <FormControl id="password">
-                  <FormLabel>Password</FormLabel>
-                  <Input type="password" />
-                </FormControl>
-                <Stack spacing={10}>
-                  <Stack
-                    direction={{ base: "column", sm: "row" }}
-                    align={"start"}
-                    justify={"space-between"}
-                  >
-                    <Checkbox>Remember me</Checkbox>
-                    <Link color={"blue.400"}>Forgot password?</Link>
+              <Flex
+                minH={"80vh"}
+                align={"flex-start"}
+                justify={"center"}
+                bg={useColorModeValue("white.50", "gray.800")}
+              >
+                <Stack spacing={2} mx={"auto"} maxW={"lg"} py={2} px={6}>
+                  <Stack align={"center"}>
+                    <Heading fontSize={"2xl"} textAlign="center">
+                      Sign in to your account
+                    </Heading>
                   </Stack>
-                  <Button
-                    bg={"blue.400"}
-                    color={"white"}
-                    _hover={{
-                      bg: "blue.500",
-                    }}
+                  <Box
+                    rounded={"lg"}
+                    bg={useColorModeValue("white", "gray.700")}
+                    boxShadow={"lg"}
+                    p={8}
                   >
-                    Sign in
-                  </Button>
+                    <Stack spacing={4}>
+                      <Formik
+                        initialValues={{ email: "", password: "" }}
+                        onSubmit={(values, actions) => {
+                          setTimeout(() => {
+                            alert(JSON.stringify(values, null, 2));
+                            actions.setSubmitting(false);
+                            closeDrawer();
+                            dispatch(authActions.logIn());
+
+                            // window.localStorage.setItem("token", Math.random());
+                            // navigate("/dashboard");
+                          }, 1000);
+                        }}
+                      >
+                        {(props) => (
+                          <Form>
+                            <Field name="email" validate={validateEmail}>
+                              {({ field, form }) => (
+                                <FormControl
+                                  id="email"
+                                  isInvalid={
+                                    form.errors.email && form.touched.email
+                                  }
+                                >
+                                  <FormLabel>Email address</FormLabel>
+                                  <Input
+                                    {...field}
+                                    type="email"
+                                    placeholder="Email"
+                                  />
+                                  <FormErrorMessage>
+                                    {form.errors.email}
+                                  </FormErrorMessage>
+                                </FormControl>
+                              )}
+                            </Field>
+                            <Field name="password" validate={validatePassword}>
+                              {({ field, form }) => (
+                                <FormControl
+                                  id="password"
+                                  isInvalid={
+                                    form.errors.password &&
+                                    form.touched.password
+                                  }
+                                >
+                                  <FormLabel>Password</FormLabel>
+                                  <Input {...field} type="password" />
+                                  <FormErrorMessage>
+                                    {form.errors.email}
+                                  </FormErrorMessage>
+                                </FormControl>
+                              )}
+                            </Field>
+                            <Stack spacing={10}>
+                              <Stack
+                                direction={{ base: "column", sm: "row" }}
+                                align={"start"}
+                                justify={"space-between"}
+                              >
+                                <Checkbox>Remember me</Checkbox>
+                                <Link color={"blue.400"}>Forgot password?</Link>
+                              </Stack>
+                              <Button
+                                type="submit"
+                                isLoading={props.isSubmitting}
+                                bg={"blue.400"}
+                                color={"white"}
+                                _hover={{
+                                  bg: "blue.500",
+                                }}
+                              >
+                                Sign in
+                              </Button>
+                            </Stack>
+                          </Form>
+                        )}
+                      </Formik>
+                    </Stack>
+                  </Box>
                 </Stack>
-              </Stack>
-            </Box>
+              </Flex>
+
+              {/* <FormControl id="email" isRequired>
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  placeholder="your-email@example.com"
+                  _placeholder={{ color: "gray.500" }}
+                  type="email"
+                />
+              </FormControl>
+              <FormControl id="password" isRequired>
+                <FormLabel>Password</FormLabel>
+                <Input type="password" />
+              </FormControl>
+              <Stack spacing={6}>
+                <Button
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                >
+                  Submit
+                </Button>
+              </Stack> */}
+            </Stack>
           </DrawerBody>
 
           <DrawerFooter></DrawerFooter>

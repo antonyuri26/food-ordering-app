@@ -93,6 +93,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         >
           <NavItem icon={link.icon}>{link.name}</NavItem>
         </Link>
+
         // <Divider orientation="horizontal" w={"200px"} />
       ))}
     </Box>

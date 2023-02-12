@@ -13,10 +13,15 @@ import {
 } from "@chakra-ui/react";
 import classes from "./MealsList.module.css";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store";
+
 // props.meals
 const MealsList = (props) => {
-  const addToCartHandler = (id) => {
-    console.log(id);
+  const dispatch = useDispatch();
+
+  const addToCartHandler = (item) => {
+    dispatch(cartActions.addToCart(item));
   };
 
   return (
@@ -33,7 +38,12 @@ const MealsList = (props) => {
         marginLeft={"3rem"}
       >
         {props.meals.map((meal) => (
-          <Card maxW="200px" h={"360px"} className={classes.cardFix}>
+          <Card
+            maxW="200px"
+            h={"360px"}
+            className={classes.cardFix}
+            key={meal.id}
+          >
             <CardBody p={2}>
               <Image src={meal.image} borderRadius="md" w={"200px"} />
               <Stack mt="4" spacing="2">
@@ -41,7 +51,7 @@ const MealsList = (props) => {
                   {meal.title}
                 </Heading>
                 <Text color="blue.600" fontSize="xl" textAlign={"center"}>
-                  $25
+                  ${meal.price}
                 </Text>
               </Stack>
             </CardBody>
@@ -51,7 +61,15 @@ const MealsList = (props) => {
                   colorScheme="red"
                   variant="outline"
                   color={"rgb(211,28,39)"}
-                  onClick={() => addToCartHandler(meal.id)}
+                  onClick={() =>
+                    addToCartHandler({
+                      id: meal.id,
+                      image: meal.image,
+                      qty: 1,
+                      title: meal.title,
+                      price: meal.price,
+                    })
+                  }
                 >
                   + Add to cart
                 </Button>

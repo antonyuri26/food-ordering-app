@@ -21,10 +21,18 @@ import classes from "./CartPreview.module.css";
 
 import CartPreviewItems from "./CartPreviewItems";
 
-function CartPreview() {
-  // const { isOpen, onToggle, onClose } = useDisclosure();
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../store/index";
 
+function CartPreview() {
   const initRef = React.useRef();
+
+  const dispatch = useDispatch();
+  const cartNotifQty = useSelector((state) => state.cart.totalQty);
+
+  const clearCartHandler = () => {
+    dispatch(cartActions.clearCart());
+  };
 
   return (
     <Popover
@@ -45,7 +53,7 @@ function CartPreview() {
                 bg: "trasparent",
               }}
             >
-              <span className={classes.notification}>1</span>
+              <span className={classes.notification}>{cartNotifQty}</span>
               <IconContext.Provider
                 value={{
                   color: "rgb(211,28,39)",
@@ -68,6 +76,18 @@ function CartPreview() {
                 <Box>
                   <CartPreviewItems />
                 </Box>
+
+                <Button
+                  mt={4}
+                  colorScheme="red"
+                  variant="outline"
+                  onClick={clearCartHandler}
+                  // ref={initRef}
+                  marginBottom={"15px"}
+                  marginRight={"10px"}
+                >
+                  Clear Cart
+                </Button>
                 <Link to={"/checkout"}>
                   <Button
                     mt={4}

@@ -1,7 +1,17 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { Form, Link } from "react-router-dom";
 import classes from "./FormCheckout.module.css";
+import {
+  FaRegUser,
+  FaRegEnvelope,
+  FaAddressCard,
+  FaCity,
+  FaCcVisa,
+  FaCcAmex,
+  FaCcMastercard,
+  FaCcPaypal,
+} from "react-icons/fa";
 
 const FormCheckout = () => {
   return (
@@ -11,61 +21,103 @@ const FormCheckout = () => {
         <Form>
           <div className={classes.row}>
             <div className={classes.col_25}>
-              <h3>Billing Address</h3>
-              <label htmlFor="fname">
-                <i>ICON</i> Full Name
+              <Text fontSize={"xl"} my={"1rem"}>
+                Billing Address
+              </Text>
+
+              <span className={classes.icon_container}>
+                <FaRegUser />
+              </span>
+              <label htmlFor="fname" className={classes.icon_container}>
+                Full Name
               </label>
+
               <input
                 type="text"
                 id="fname"
                 name="firstname"
-                placeholder="John M. Doe"
+                placeholder="Your name"
               />
-              <label htmlFor="email">
-                <i>ICON</i> Email
+              <span className={classes.icon_container}>
+                <FaRegEnvelope />
+              </span>
+              <label htmlFor="email" className={classes.icon_container}>
+                Email
               </label>
               <input
                 type="text"
                 id="email"
                 name="email"
-                placeholder="john@example.com"
+                placeholder="test@example.com"
               />
-              <label htmlFor="adr">
-                <i>ICON</i> Address
+              <span className={classes.icon_container}>
+                <FaAddressCard />
+              </span>
+              <label htmlFor="adr" className={classes.icon_container}>
+                Address
               </label>
               <input
                 type="text"
                 id="adr"
                 name="address"
-                placeholder="542 W. 15th Street"
+                placeholder="123 name Street"
               />
-              <label htmlFor="city">
-                <i>ICON</i> City
+              <span className={classes.icon_container}>
+                <FaCity />
+              </span>
+              <label htmlFor="city" className={classes.icon_container}>
+                City
               </label>
-              <input type="text" id="city" name="city" placeholder="New York" />
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="City Name"
+              />
 
               <div className={classes.row}>
-                <div className={classes.col_50}>
+                <div className={classes.col_25}>
                   <label htmlFor="state">State</label>
-                  <input type="text" id="state" name="state" placeholder="NY" />
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    placeholder="QLD"
+                  />
                 </div>
-                <div className={classes.col_50}>
-                  <label htmlFor="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="10001" />
+                <div className={classes.col_25}>
+                  <label htmlFor="zip">Postcode</label>
+                  <input type="text" id="zip" name="zip" placeholder="4551" />
                 </div>
               </div>
             </div>
 
             <div className={classes.col_25}>
-              <h3>Payment</h3>
-              <label htmlFor="fname">Accepted Cards</label>
-              <div className={classes.icon_container}>
-                <i>ICON</i>
-                <i>ICON</i>
-                <i>ICON</i>
-                <i>ICON</i>
+              <Text fontSize={"xl"} my={"1rem"}>
+                Payment
+              </Text>
+
+              <div>
+                <label htmlFor="fname">Accepted Cards</label>
               </div>
-              <label htmlFor="cname">Name on Card</label>
+              <div className={classes.icon_cards_container}>
+                <span>
+                  <FaCcVisa size={"1.8rem"} />
+                </span>
+                <span>
+                  <FaCcAmex size={"1.8rem"} />
+                </span>
+                <span>
+                  <FaCcMastercard size={"1.8rem"} />
+                </span>
+                <span>
+                  <FaCcPaypal size={"1.8rem"} />
+                </span>
+              </div>
+
+              <div>
+                <label htmlFor="cname">Name on Card</label>
+              </div>
               <input
                 type="text"
                 id="cname"

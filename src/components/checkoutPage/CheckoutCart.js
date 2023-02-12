@@ -5,7 +5,7 @@ import classes from "./FormCheckout.module.css";
 
 const CheckoutCart = () => {
   return (
-    <div className={classes.col_25}>
+    <div className={classes.col_35}>
       <div className={classes.container}>
         <Text fontSize="3xl">Summary (1) Items</Text>
 

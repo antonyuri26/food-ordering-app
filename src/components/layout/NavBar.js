@@ -19,10 +19,12 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import logo from "../../assets/images/Logo_hungry.png";
 
 import CartPreview from "../checkoutPage/CartPreview";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate;
 
   const cartPreviewToggler = () => {
     setIsCartOpen(true);
@@ -88,7 +90,7 @@ const NavBar = () => {
             fontWeight={600}
             color={"white"}
             bg={"rgb(211,28,39)"}
-            href={"#"}
+            href={"/register"}
             _hover={{
               bg: "rgb(250,28,39)",
             }}

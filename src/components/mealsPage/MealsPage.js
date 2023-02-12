@@ -33,6 +33,7 @@ export async function loader({ request, params }) {
       title: item.strMeal.substring(0, 36),
       id: item.idMeal,
       image: item.strMealThumb,
+      price: Math.floor(Math.random() * 20) + 10,
     };
   });
 

@@ -24,6 +24,8 @@
 .col_35 {
   -ms-flex: 35%; /* IE10 */
   flex: 35%;
+  padding: 0 16px 0 0; /* change on media queries
+  /* padding: 0 16px; */
 }
 
 .col_75 {
@@ -53,15 +55,28 @@ input[type="text"] {
 }
 
 label {
-  margin-bottom: 10px;
-  display: block;
+  margin-left: 3px;
 }
 
 .icon_container {
-  margin-bottom: 20px;
   padding: 7px 0;
-  font-size: 24px;
+  font-size: 17px;
+  display: inline-block;
+  vertical-align: middle;
 }
+
+.icon_cards_container {
+  display: flex;
+  width: 45%;
+  justify-content: space-around;
+  font-size: 16px;
+  margin-top: 1px;
+  margin-bottom: 20px;
+}
+
+/* .icon_cards {
+  width: 50px;
+} */
 
 .btn {
   background-color: #04aa6d;
