@@ -92,11 +92,11 @@ const FormCheckout = () => {
     };
 
     fetchDataToServer(orderDetails);
+    window.localStorage.removeItem("tempOrder");
     console.log(orderDetails);
   };
 
   return (
-    // <div className={classes.row}>
     <div className={classes.col_50}>
       <div className={classes.container}>
         <Form onSubmit={orderSubmitHandler}>
@@ -266,7 +266,6 @@ const FormCheckout = () => {
               type="submit"
               value="Continue to checkout"
               onClick={() => navigate("/menu")}
-              //   className={classes.btn}
             >
               Back to Menu
             </Button>
@@ -274,7 +273,6 @@ const FormCheckout = () => {
               colorScheme="green"
               type="submit"
               value="Continue to checkout"
-              //   className={classes.btn}
             >
               Confirm Order
             </Button>

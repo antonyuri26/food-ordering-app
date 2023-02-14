@@ -101,7 +101,6 @@ function CartPreview() {
                   </Button>
                 </Link>
               </PopoverBody>
-              {/* <PopoverFooter>This is the footer</PopoverFooter> */}
             </PopoverContent>
           </Portal>
         </>

@@ -1,9 +1,12 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+const savedOrder = JSON.parse(window.localStorage.getItem("tempOrder"));
+
+//cartInitialState based on local storage
 let cartInitialState = {
-  items: [],
-  totalPrice: 0,
-  totalQty: 0,
+  items: savedOrder ? savedOrder.items : [],
+  totalPrice: savedOrder ? savedOrder.totalPrice : 0,
+  totalQty: savedOrder ? savedOrder.totalQty : 0,
 };
 
 const cartSlice = createSlice({
@@ -32,6 +35,16 @@ const cartSlice = createSlice({
         updatedItems = state.items.concat(action.payload);
       }
       const newTotalQty = state.totalQty + 1;
+
+      window.localStorage.setItem(
+        "tempOrder",
+        JSON.stringify({
+          items: updatedItems,
+          totalPrice: updatedTotalPrice,
+          totalQty: newTotalQty,
+        })
+      );
+
       return {
         items: updatedItems,
         totalPrice: updatedTotalPrice,
@@ -104,7 +117,18 @@ const cartSlice = createSlice({
     },
 
     clearCart() {
+      window.localStorage.removeItem("tempOrder");
       return cartInitialState;
+    },
+
+    //fetching order from localstorage
+    fetchLocalOrder(state, action) {
+      console.log(action.payload);
+      return {
+        items: action.payload.items,
+        totalPrice: action.payload.totalPrice,
+        totalQty: action.payload.totalQty,
+      };
     },
   },
 });
@@ -119,7 +143,11 @@ const authSlice = createSlice({
   initialState: authInitialState,
   reducers: {
     logIn(state) {
-      state.isLoggedIn = !state.isLoggedIn;
+      state.isLoggedIn = true;
+    },
+    logOut(state) {
+      state.isLoggedIn = false;
+      window.localStorage.clear();
     },
   },
 });

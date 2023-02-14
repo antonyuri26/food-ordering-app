@@ -25,20 +25,15 @@ import { authActions } from "../../store";
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
-  const [isCartOpen, setIsCartOpen] = useState(false);
+
   const navigate = useNavigate;
 
   const isAuth = useSelector((state) => state.auth.isLoggedIn);
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
-  // const cartPreviewToggler = () => {
-  //   setIsCartOpen(true);
-  // };
-
   const signOutHandler = () => {
-    dispatch(authActions.logIn());
-    window.localStorage.removeItem("token");
+    dispatch(authActions.logOut());
     navigate("/");
   };
 
@@ -237,7 +232,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Menu",
-    href: "menu",
+    href: "/menu",
   },
   {
     label: "About",

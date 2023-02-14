@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../../store/index";
 
 const CartPreviewItems = () => {
-  const addedItem = useSelector((state) => state.cart);
+  let addedItem = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const addItemHandler = (item) => {
@@ -28,6 +28,8 @@ const CartPreviewItems = () => {
   const deleteItemHandler = (item) => {
     dispatch(cartActions.deleteFromCart(item));
   };
+
+  const savedOrder = JSON.parse(window.localStorage.getItem("tempOrder"));
 
   return (
     <>
