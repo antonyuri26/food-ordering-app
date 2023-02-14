@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import classes from "./MealDetails.module.css";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { json } from "react-router-dom";
@@ -85,7 +84,7 @@ const MealDetails = (props) => {
     content = <p>Loading</p>;
   }
 
-  return <Box className={classes.header}>{content}</Box>;
+  return <Box>{content}</Box>;
 };
 
 export default MealDetails;

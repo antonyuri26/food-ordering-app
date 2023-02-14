@@ -16,7 +16,13 @@ const Checkout = () => {
   return (
     <div
       className={classes.row}
-      style={{ marginTop: "5px", marginBottom: "5px" }}
+      style={{
+        marginTop: "0px",
+        marginBottom: "0px",
+        background: "rgb(250,250,250)",
+        background:
+          "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(224,217,217,1) 100%)",
+      }}
     >
       <SignInDrawer isOpen={isOpen} closeDrawer={setIsOpen} />
       {/* <FormCheckout /> */}

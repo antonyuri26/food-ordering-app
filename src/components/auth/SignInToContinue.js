@@ -9,7 +9,11 @@ const SignInToContinue = (props) => {
   return (
     <>
       <Box
-        bg="rgb(242,242,242)"
+        css={{
+          background: "rgb(250,250,250)",
+          background:
+            "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(224,217,217,1) 100%)",
+        }}
         w="50%"
         minH={"606px"}
         display={"flex"}
@@ -18,7 +22,7 @@ const SignInToContinue = (props) => {
         marginLeft={"16px"}
       >
         <Box
-          bg={"RGB(235 235 235)"}
+          bg="rgb(242,242,242)"
           m={"10rem"}
           w="50%"
           h="30%"

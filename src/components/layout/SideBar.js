@@ -41,7 +41,11 @@ export default function SideBar({ children }) {
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
-        backgroundColor={"rgb(224,217,217)"}
+        css={{
+          background: "rgb(250,250,250)",
+          background:
+            "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(224,217,217,1) 100%)",
+        }}
       />
       <Drawer
         autoFocus={false}
@@ -68,7 +72,11 @@ export default function SideBar({ children }) {
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      bg={useColorModeValue("white", "gray.900")}
+      css={{
+        background: "rgb(250,250,250)",
+        background:
+          "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(224,217,217,1) 100%)",
+      }}
       borderRight="0px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
       w={{ base: "full", md: 60 }}

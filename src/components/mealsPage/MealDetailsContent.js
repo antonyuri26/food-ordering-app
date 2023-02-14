@@ -75,7 +75,7 @@ const MealDetailContent = (props) => {
       </Box>
       <Box
         textAlign={"center"}
-        pb={"2rem"}
+        pb={"3rem"}
         display={"flex"}
         justifyContent={"center"}
       >
