@@ -117,6 +117,8 @@ const NavBar = () => {
               _hover={{
                 bg: "rgb(250,28,39)",
               }}
+              href={"/register"}
+              // onClick={() => navigate("/register")}
             >
               Sign Up
             </Button>

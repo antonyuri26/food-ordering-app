@@ -4,8 +4,8 @@ import classes from "./FormCheckout.module.css";
 
 import FormCheckout from "./FormCheckout";
 import CheckoutCart from "./CheckoutCart";
-import SignInToContinue from "./SignInToContinue";
-import SignInDrawer from "./SignInDrawer";
+import SignInToContinue from "../auth/SignInToContinue";
+import SignInDrawer from "../auth/SignInDrawer";
 
 const Checkout = () => {
   const [isOpen, setIsOpen] = useState(false);
