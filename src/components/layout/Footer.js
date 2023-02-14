@@ -100,8 +100,6 @@ const Footer = () => {
       <Container as={Stack} maxW={"92%"} py={10}>
         <SimpleGrid
           templateColumns={{ sm: "2fr 1fr", md: "2fr 1.3fr 1fr 1fr 2fr" }}
-          // templateColumns={{ sm: "2fr 1fr", md: "2fr 1.3fr 1fr 1fr 2fr" }}
-          // templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
           spacing={8}
         >
           <Stack spacing={6}>

@@ -1,22 +1,19 @@
 import React from "react";
-import { useRef } from "react";
+
 import {
   Drawer,
   DrawerBody,
   DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   Button,
   Input,
-  useDisclosure,
   Box,
   FormControl,
   FormLabel,
   Stack,
   useColorModeValue,
-  Text,
   Link,
   Checkbox,
   Flex,
@@ -29,7 +26,6 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../../store";
 
 function SignInDrawer(props) {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const dispatch = useDispatch();
 
@@ -66,8 +62,6 @@ function SignInDrawer(props) {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          {/* <DrawerHeader>Sign in to your account</DrawerHeader> */}
-
           <DrawerBody>
             <Stack
               spacing={4}
@@ -107,8 +101,6 @@ function SignInDrawer(props) {
                             closeDrawer();
                             window.localStorage.setItem("token", Math.random());
                             dispatch(authActions.logIn());
-
-                            // navigate("/dashboard");
                           }, 1000);
                         }}
                       >
@@ -179,30 +171,6 @@ function SignInDrawer(props) {
                   </Box>
                 </Stack>
               </Flex>
-
-              {/* <FormControl id="email" isRequired>
-                <FormLabel>Email address</FormLabel>
-                <Input
-                  placeholder="your-email@example.com"
-                  _placeholder={{ color: "gray.500" }}
-                  type="email"
-                />
-              </FormControl>
-              <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <Input type="password" />
-              </FormControl>
-              <Stack spacing={6}>
-                <Button
-                  bg={"blue.400"}
-                  color={"white"}
-                  _hover={{
-                    bg: "blue.500",
-                  }}
-                >
-                  Submit
-                </Button>
-              </Stack> */}
             </Stack>
           </DrawerBody>
 

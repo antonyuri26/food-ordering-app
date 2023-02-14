@@ -3,11 +3,9 @@ import classes from "./OrderConfirmation.module.css";
 import logo from "../../assets/images/Logo_hungry.png";
 import imgConfirm from "../../assets/images/imgconfirm.png";
 
-import { Divider, Text, Image, Flex } from "@chakra-ui/react";
+import { Divider, Text, Image } from "@chakra-ui/react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { cartActions } from "../../store/index";
-import { GiPartyPopper } from "react-icons/gi";
+import { useSelector } from "react-redux";
 
 const OrderConfirmation = () => {
   const orderedItem = useSelector((state) => state.cart);
@@ -23,12 +21,15 @@ const OrderConfirmation = () => {
             Math.random() + 10
           )}`}</Text>
           <Image src={imgConfirm} />
-          <img src={logo} className={classes.logo_header} />
+          <img
+            src={logo}
+            className={classes.logo_header}
+            alt={"company logo"}
+          />
         </div>
         {orderedItem.items.map((item) => (
           <div className={classes.row} key={item.id}>
             <div className={classes.image}>
-              {/* add product image here */}
               <Image src={item.image} />
             </div>
             <div className={classes.title}>

@@ -9,10 +9,7 @@ import {
   PopoverCloseButton,
   Button,
   Portal,
-  useDisclosure,
   Text,
-  AvatarBadge,
-  Avatar,
 } from "@chakra-ui/react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IconContext } from "react-icons";
@@ -82,7 +79,6 @@ function CartPreview() {
                   colorScheme="red"
                   variant="outline"
                   onClick={clearCartHandler}
-                  // ref={initRef}
                   marginBottom={"15px"}
                   marginRight={"10px"}
                 >

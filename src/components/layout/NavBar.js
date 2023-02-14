@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   Box,
@@ -114,7 +114,6 @@ const NavBar = () => {
               fontWeight={600}
               color={"white"}
               bg={"rgb(211,28,39)"}
-              // href={"/register"}
               _hover={{
                 bg: "rgb(250,28,39)",
               }}

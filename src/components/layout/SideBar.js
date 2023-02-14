@@ -11,7 +11,6 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  Divider,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import { Link as ReactLink } from "react-router-dom";
@@ -93,8 +92,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
         >
           <NavItem icon={link.icon}>{link.name}</NavItem>
         </Link>
-
-        // <Divider orientation="horizontal" w={"200px"} />
       ))}
     </Box>
   );
@@ -157,10 +154,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
-      {/* <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
-      </Text> */}
     </Flex>
   );
 };

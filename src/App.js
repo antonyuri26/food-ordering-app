@@ -11,11 +11,9 @@ import About from "./components/aboutPage/About";
 import Contact from "./components/contactPage/Contact";
 import ErrorPage from "./components/errorPage/ErrorPage";
 import RootLayout from "./components/layout/RootLayout";
-import SignIn from "./components/auth/SignIn";
 import Register from "./components/auth/Register";
 import Checkout from "./components/checkoutPage/Checkout";
 import MealsPage from "./components/mealsPage/MealsPage";
-import CartPreview from "./components/checkoutPage/CartPreview";
 
 import { loader as mealsLoader } from "./components/mealsPage/MealsPage";
 import OrderConfirmation from "./components/ConfirmationPage/OrderConfirmation";
@@ -42,7 +40,6 @@ const router = createBrowserRouter([
       },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
-      // { path: "/signin", element: <SignIn /> },
       { path: "/register", element: <Register /> },
       { path: "/checkout", element: <Checkout /> },
       { path: "/confirmation", element: <OrderConfirmation /> },

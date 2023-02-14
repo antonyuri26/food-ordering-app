@@ -1,7 +1,7 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { Form, Link, useNavigate } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { Form, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import classes from "./FormCheckout.module.css";
 import {
@@ -58,6 +58,7 @@ const FormCheckout = () => {
       );
 
       const data = await response.json();
+      console.log(data);
 
       if (!response.ok) {
         throw new Error("Error Ehile trying submitt your order");

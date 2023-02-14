@@ -12,8 +12,6 @@ const Checkout = () => {
 
   const isAuth = useSelector((state) => state.auth.isLoggedIn);
   const token = useSelector((state) => state.auth.token);
-  console.log(token);
-  console.log(isAuth);
 
   return (
     <div

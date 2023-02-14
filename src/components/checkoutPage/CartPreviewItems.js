@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./CartPreviewItems.module.css";
-import logo from "../../assets/images/Logo_hungry.png";
 
 import {
   FaRegMinusSquare,
@@ -29,8 +28,6 @@ const CartPreviewItems = () => {
     dispatch(cartActions.deleteFromCart(item));
   };
 
-  const savedOrder = JSON.parse(window.localStorage.getItem("tempOrder"));
-
   return (
     <>
       {addedItem.items.map((item) => (
@@ -46,7 +43,6 @@ const CartPreviewItems = () => {
             </IconContext.Provider>
           </div>
           <div className={classes.image}>
-            {/* add product image here */}
             <Image src={item.image} />
           </div>
           <div className={classes.title}>

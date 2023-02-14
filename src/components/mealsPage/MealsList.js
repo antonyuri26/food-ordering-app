@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Stack,
@@ -6,7 +6,6 @@ import {
   Button,
   ButtonGroup,
   Heading,
-  Divider,
   Card,
   CardBody,
   CardFooter,
@@ -15,13 +14,22 @@ import classes from "./MealsList.module.css";
 
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store";
+import Modal from "../layout/Modal";
+import MealDetails from "./MealDetails";
 
-// props.meals
 const MealsList = (props) => {
   const dispatch = useDispatch();
 
   const addToCartHandler = (item) => {
     dispatch(cartActions.addToCart(item));
+  };
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [meal, setMeal] = useState();
+
+  const mealDetailHandler = (meal) => {
+    setModalIsOpen(true);
+    setMeal(meal);
   };
 
   return (
@@ -37,6 +45,11 @@ const MealsList = (props) => {
         marginY={"1rem"}
         marginLeft={"3rem"}
       >
+        {modalIsOpen && (
+          <Modal onClose={() => setModalIsOpen(false)}>
+            <MealDetails meal={meal} />
+          </Modal>
+        )}
         {props.meals.map((meal) => (
           <Card
             maxW="200px"
@@ -45,7 +58,13 @@ const MealsList = (props) => {
             key={meal.id}
           >
             <CardBody p={2}>
-              <Image src={meal.image} borderRadius="md" w={"200px"} />
+              <Image
+                src={meal.image}
+                borderRadius="md"
+                w={"200px"}
+                onClick={() => mealDetailHandler(meal)}
+                cursor={"pointer"}
+              />
               <Stack mt="4" spacing="2">
                 <Heading size="sm" textAlign={"center"}>
                   {meal.title}
@@ -80,35 +99,6 @@ const MealsList = (props) => {
       </Stack>
     </>
   );
-
-  // (
-  //   <Stack
-  //     direction="row"
-  //     wrap={"wrap"}
-  //     justifyContent={"center"}
-  //     alignContent={"flex-start"}
-  //     h={"80%"}
-  //     rowGap={"1rem"}
-  //     columnGap={"0.5rem"}
-  //     marginY={"1rem"}
-  //   >
-  //     {props.meals.map((meal) => (
-  //       <>
-  //         <Image
-  //           boxSize="250px"
-  //           objectFit="cover"
-  //           src={meal.image}
-  //           alt={meal.title}
-  //           key={meal.id}
-  //           border={"1px solid rgb(211,28,39)"}
-  //           borderRadius={"5px"}
-  //           className={classes.imagem}
-  //         />
-  //         {/* <Text>{meal.title}</Text> */}
-  //       </>
-  //     ))}
-  //   </Stack>
-  // );
 };
 
 export default MealsList;
