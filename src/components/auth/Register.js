@@ -38,6 +38,7 @@ export default function Register() {
       email: email.current.value,
       password: password.current.value,
     };
+    window.localStorage.setItem("token", Math.random());
     alert(JSON.stringify(user, null, 2));
     dispatch(authActions.logIn());
     navigate("/");

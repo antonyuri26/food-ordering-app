@@ -10,8 +10,10 @@ import SignInDrawer from "./SignInDrawer";
 const Checkout = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // const auth = useSelector((state) => state.auth.isLoggedIn);
   const isAuth = useSelector((state) => state.auth.isLoggedIn);
+  const token = useSelector((state) => state.auth.token);
+  console.log(token);
+  console.log(isAuth);
 
   return (
     <div
@@ -19,12 +21,12 @@ const Checkout = () => {
       style={{ marginTop: "5px", marginBottom: "5px" }}
     >
       <SignInDrawer isOpen={isOpen} closeDrawer={setIsOpen} />
-      <FormCheckout />
-      {/* {isAuth ? (
+      {/* <FormCheckout /> */}
+      {isAuth || token ? (
         <FormCheckout />
       ) : (
         <SignInToContinue signInHandler={setIsOpen} />
-      )} */}
+      )}
       <CheckoutCart />
     </div>
   );

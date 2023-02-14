@@ -1,7 +1,7 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { Form, Link, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import classes from "./FormCheckout.module.css";
 import {
@@ -34,12 +34,22 @@ const FormCheckout = () => {
 
   async function fetchDataToServer(orderDetails) {
     try {
+      const date = new Date().toLocaleString("en-au", {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
       const response = await fetch(
         "https://food-app-b3cbe-default-rtdb.asia-southeast1.firebasedatabase.app/order.json",
         {
           method: "POST",
           body: JSON.stringify({
             orderDetails,
+            date,
           }),
           headers: {
             "Content-Type": "application/json",
@@ -51,6 +61,8 @@ const FormCheckout = () => {
 
       if (!response.ok) {
         throw new Error("Error Ehile trying submitt your order");
+      } else {
+        navigate("/confirmation");
       }
     } catch (error) {
       console.log(Error);
@@ -80,7 +92,7 @@ const FormCheckout = () => {
     };
 
     fetchDataToServer(orderDetails);
-    // console.log(orderDetails);
+    console.log(orderDetails);
   };
 
   return (
@@ -107,6 +119,7 @@ const FormCheckout = () => {
                 name="fullname"
                 placeholder="Your name"
                 ref={fullName}
+                autoFocus
               />
               <span className={classes.icon_container}>
                 <FaRegEnvelope />

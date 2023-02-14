@@ -105,9 +105,9 @@ function SignInDrawer(props) {
                             alert(JSON.stringify(values, null, 2));
                             actions.setSubmitting(false);
                             closeDrawer();
+                            window.localStorage.setItem("token", Math.random());
                             dispatch(authActions.logIn());
 
-                            // window.localStorage.setItem("token", Math.random());
                             // navigate("/dashboard");
                           }, 1000);
                         }}

@@ -18,6 +18,7 @@ import MealsPage from "./components/mealsPage/MealsPage";
 import CartPreview from "./components/checkoutPage/CartPreview";
 
 import { loader as mealsLoader } from "./components/mealsPage/MealsPage";
+import OrderConfirmation from "./components/ConfirmationPage/OrderConfirmation";
 
 //creating routes
 const router = createBrowserRouter([
@@ -43,8 +44,8 @@ const router = createBrowserRouter([
       { path: "/contact", element: <Contact /> },
       // { path: "/signin", element: <SignIn /> },
       { path: "/register", element: <Register /> },
-      // { path: "/cart", element: <CartPreview /> },
       { path: "/checkout", element: <Checkout /> },
+      { path: "/confirmation", element: <OrderConfirmation /> },
     ],
   },
 ]);

@@ -111,13 +111,14 @@ const cartSlice = createSlice({
 
 let authInitialState = {
   isLoggedIn: false,
+  token: window.localStorage.getItem("token") ? true : false, //not sure if right
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState: authInitialState,
   reducers: {
-    logIn(state, action) {
+    logIn(state) {
       state.isLoggedIn = !state.isLoggedIn;
     },
   },

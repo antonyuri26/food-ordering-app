@@ -20,14 +20,26 @@ import logo from "../../assets/images/Logo_hungry.png";
 
 import CartPreview from "../checkoutPage/CartPreview";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store";
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const navigate = useNavigate;
 
-  const cartPreviewToggler = () => {
-    setIsCartOpen(true);
+  const isAuth = useSelector((state) => state.auth.isLoggedIn);
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+
+  // const cartPreviewToggler = () => {
+  //   setIsCartOpen(true);
+  // };
+
+  const signOutHandler = () => {
+    dispatch(authActions.logIn());
+    window.localStorage.removeItem("token");
+    navigate("/");
   };
 
   return (
@@ -83,20 +95,38 @@ const NavBar = () => {
           <div style={{ paddingTop: "5px" }}>
             <CartPreview />
           </div>
-          <Button
-            as={"a"}
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"rgb(211,28,39)"}
-            href={"/register"}
-            _hover={{
-              bg: "rgb(250,28,39)",
-            }}
-          >
-            Sign Up
-          </Button>
+          {isAuth || token ? (
+            <Button
+              as={"a"}
+              display={{ base: "none", md: "inline-flex" }}
+              fontSize={"sm"}
+              fontWeight={600}
+              color={"white"}
+              bg={"rgb(211,28,39)"}
+              onClick={signOutHandler}
+              href={"/register"}
+              _hover={{
+                bg: "rgb(250,28,39)",
+              }}
+            >
+              Sign Out
+            </Button>
+          ) : (
+            <Button
+              as={"a"}
+              display={{ base: "none", md: "inline-flex" }}
+              fontSize={"sm"}
+              fontWeight={600}
+              color={"white"}
+              bg={"rgb(211,28,39)"}
+              // href={"/register"}
+              _hover={{
+                bg: "rgb(250,28,39)",
+              }}
+            >
+              Sign Up
+            </Button>
+          )}
         </Stack>
       </Flex>
 
