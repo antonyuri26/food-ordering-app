@@ -16,6 +16,7 @@ import Checkout from "./components/checkoutPage/Checkout";
 import MealsPage from "./components/mealsPage/MealsPage";
 
 import { loader as mealsLoader } from "./components/mealsPage/MealsPage";
+import { loader as popMealsLoader } from "./components/homePage/HomePage";
 import OrderConfirmation from "./components/confirmationPage/OrderConfirmation";
 
 //creating routes
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        loader: popMealsLoader,
       },
       {
         path: "/menu",

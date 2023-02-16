@@ -12,7 +12,7 @@ const SignInToContinue = (props) => {
         css={{
           background: "rgb(250,250,250)",
           background:
-            "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(224,217,217,1) 100%)",
+            "linear-gradient(0deg, rgba(250,250,250,1) 50%, rgba(224,217,217,1) 100%)",
         }}
         w="50%"
         minH={"606px"}

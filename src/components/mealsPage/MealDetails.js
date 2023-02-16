@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { json } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
 
 import MealDetailContent from "./MealDetailsContent";
 
@@ -81,10 +82,10 @@ const MealDetails = (props) => {
   }
 
   if (isLoading) {
-    content = <p>Loading</p>;
+    content = <Spinner color="red.500" size={"xl"} />;
   }
 
-  return <Box>{content}</Box>;
+  return <Box textAlign={"center"}>{content}</Box>;
 };
 
 export default MealDetails;

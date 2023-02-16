@@ -44,7 +44,7 @@ export default function SideBar({ children }) {
         css={{
           background: "rgb(250,250,250)",
           background:
-            "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(224,217,217,1) 100%)",
+            "linear-gradient(0deg, rgba(250,250,250,1) 50%, rgba(224,217,217,1) 100%)",
         }}
       />
       <Drawer
@@ -75,7 +75,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       css={{
         background: "rgb(250,250,250)",
         background:
-          "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(224,217,217,1) 100%)",
+          "linear-gradient(0deg, rgba(250,250,250,1) 50%, rgba(224,217,217,1) 100%)",
       }}
       borderRight="0px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}

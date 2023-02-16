@@ -43,7 +43,7 @@ const NavBar = () => {
         bg={useColorModeValue("rgb(224,217,217)", "gray.600")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
-        py={{ base: 4 }}
+        py={{ base: 6 }}
         px={{ base: 10 }}
         borderBottom={1}
         borderStyle={"solid"}

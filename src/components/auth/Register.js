@@ -49,7 +49,11 @@ export default function Register() {
       minH={"80vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("#f2f2f2", "gray.800")}
+      css={{
+        background: "rgb(250,250,250)",
+        background:
+          "linear-gradient(0deg, rgba(250,250,250,1) 50%, rgba(224,217,217,1) 100%)",
+      }}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
