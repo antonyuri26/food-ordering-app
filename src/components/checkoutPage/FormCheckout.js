@@ -43,19 +43,16 @@ const FormCheckout = () => {
         minute: "2-digit",
       });
 
-      const response = await fetch(
-        "https://food-app-b3cbe-default-rtdb.asia-southeast1.firebasedatabase.app/order.json",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            orderDetails,
-            date,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(process.env.REACT_APP_FIREBASE_API_KEY, {
+        method: "POST",
+        body: JSON.stringify({
+          orderDetails,
+          date,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const data = await response.json();
       console.log(data);
@@ -121,6 +118,7 @@ const FormCheckout = () => {
                 placeholder="Your name"
                 ref={fullName}
                 autoFocus
+                required
               />
               <span className={classes.icon_container}>
                 <FaRegEnvelope />
@@ -134,6 +132,7 @@ const FormCheckout = () => {
                 name="email"
                 placeholder="test@example.com"
                 ref={email}
+                required
               />
               <span className={classes.icon_container}>
                 <FaAddressCard />
@@ -147,6 +146,7 @@ const FormCheckout = () => {
                 name="address"
                 placeholder="123 name Street"
                 ref={address}
+                required
               />
               <span className={classes.icon_container}>
                 <FaCity />
@@ -160,6 +160,7 @@ const FormCheckout = () => {
                 name="city"
                 placeholder="City Name"
                 ref={city}
+                required
               />
 
               <div className={classes.row}>
@@ -171,6 +172,7 @@ const FormCheckout = () => {
                     name="state"
                     placeholder="QLD"
                     ref={state}
+                    required
                   />
                 </div>
                 <div className={classes.col_25}>
@@ -181,6 +183,7 @@ const FormCheckout = () => {
                     name="zip"
                     placeholder="4551"
                     ref={postcode}
+                    required
                   />
                 </div>
               </div>
@@ -218,6 +221,7 @@ const FormCheckout = () => {
                 name="cardname"
                 placeholder="John More Doe"
                 ref={nameCard}
+                required
               />
               <label htmlFor="ccnum">Credit card number</label>
               <input
@@ -226,6 +230,7 @@ const FormCheckout = () => {
                 name="cardnumber"
                 placeholder="1111-2222-3333-4444"
                 ref={creditCardNumber}
+                required
               />
               <label htmlFor="expmonth">Exp Month</label>
               <input
@@ -234,6 +239,7 @@ const FormCheckout = () => {
                 name="expmonth"
                 placeholder="September"
                 ref={expMonth}
+                required
               />
 
               <div className={classes.row}>
@@ -245,6 +251,7 @@ const FormCheckout = () => {
                     name="expyear"
                     placeholder="2018"
                     ref={expYear}
+                    required
                   />
                 </div>
                 <div className={classes.col_50}>
@@ -255,6 +262,7 @@ const FormCheckout = () => {
                     name="cvv"
                     placeholder="352"
                     ref={cvv}
+                    required
                   />
                 </div>
               </div>

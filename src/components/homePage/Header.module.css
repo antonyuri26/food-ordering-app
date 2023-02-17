@@ -1,7 +1,8 @@
 .hero_container {
   background-image: url("../../assets/images/hero1.jpg");
   background-size: 100%;
-  background-position: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 600px;
   display: flex;
   align-items: center;
@@ -10,4 +11,22 @@
 
 .red_heading {
   color: rgb(211, 28, 39);
+}
+
+@media only screen and (max-width: 1040px) {
+  .hero_container {
+    height: 450px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .hero_container {
+    height: 350px;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .hero_container {
+    height: 250px;
+  }
 }

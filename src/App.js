@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Fonts from "./theme/Fonts";
 import theme from "./theme/theme";
 import { createBrowserRouter } from "react-router-dom";
@@ -6,18 +6,22 @@ import { RouterProvider } from "react-router-dom";
 import { ChakraProvider, Container } from "@chakra-ui/react";
 
 import HomePage from "./components/homePage/HomePage";
-import MenuPage from "./components/menuPage/MenuPage";
+// import MenuPage from "./components/menuPage/MenuPage";
 import About from "./components/aboutPage/About";
 import Contact from "./components/contactPage/Contact";
 import ErrorPage from "./components/errorPage/ErrorPage";
 import RootLayout from "./components/layout/RootLayout";
 import Register from "./components/auth/Register";
 import Checkout from "./components/checkoutPage/Checkout";
-import MealsPage from "./components/mealsPage/MealsPage";
+// import MealsPage from "./components/mealsPage/MealsPage";
 
 import { loader as mealsLoader } from "./components/mealsPage/MealsPage";
 import { loader as popMealsLoader } from "./components/homePage/HomePage";
 import OrderConfirmation from "./components/confirmationPage/OrderConfirmation";
+
+const MenuPage = lazy(() => import("./components/menuPage/MenuPage"));
+
+const MealsPage = lazy(() => import("./components/mealsPage/MealsPage"));
 
 //creating routes
 const router = createBrowserRouter([
@@ -33,11 +37,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/menu",
-        element: <MenuPage />,
+        element: (
+          <Suspense>
+            <MenuPage />
+          </Suspense>
+        ),
       },
       {
         path: "/menu/:categoryId",
-        element: <MealsPage />,
+        element: (
+          <Suspense>
+            <MealsPage />
+          </Suspense>
+        ),
         loader: mealsLoader,
       },
       { path: "/about", element: <About /> },

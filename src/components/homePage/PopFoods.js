@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import {
   Heading,
   Text,
-  Image,
   ButtonGroup,
   Stack,
   Button,
@@ -15,6 +14,8 @@ import {
 import { cartActions } from "../../store";
 import Modal from "../layout/Modal";
 import MealDetails from "../mealsPage/MealDetails";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useMediaQuery } from "@chakra-ui/react";
 
 const PopFoods = (props) => {
   const dispatch = useDispatch();
@@ -31,9 +32,14 @@ const PopFoods = (props) => {
     setMeal(meal);
   };
 
+  const [isLargerThan990] = useMediaQuery("(max-width: 990px)");
+
   return (
     <>
-      <Flex justifyContent={"center"}>
+      <Flex
+        justifyContent={"center"}
+        flexDir={isLargerThan990 ? "column" : "row"}
+      >
         {modalIsOpen && (
           <Modal onClose={() => setModalIsOpen(false)}>
             <MealDetails meal={meal} />
@@ -76,7 +82,7 @@ const PopFoods = (props) => {
                   },
                 }}
               >
-                <Image
+                <LazyLoadImage
                   rounded={"lg"}
                   height={230}
                   width={282}
@@ -137,25 +143,3 @@ const PopFoods = (props) => {
 };
 
 export default PopFoods;
-
-// export async function loader({ request, params }) {
-//   const res = await fetch(
-//     `https://www.themealdb.com/api/json/v1/1/filter.php?c=${id}`
-//   );
-
-//   const data = await res.json();
-//   const mealList = data.meals.map((item) => {
-//     return {
-//       title: item.strMeal.substring(0, 36),
-//       id: item.idMeal,
-//       image: item.strMealThumb,
-//       price: Math.floor(Math.random() * 20) + 10,
-//     };
-//   });
-
-//   if (!res.ok) {
-//     throw json({ message: "Could not Find the data" }, { status: 505 });
-//   } else {
-//     return mealList;
-//   }
-// }

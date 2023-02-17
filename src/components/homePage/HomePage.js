@@ -8,9 +8,13 @@ import WhyUs from "./WhyUs";
 import Blog from "./Blog";
 import MainHeading from "./MainHeading";
 import { Box, Flex } from "@chakra-ui/layout";
+import { useMediaQuery } from "@chakra-ui/react";
 
 const HomePage = () => {
   const popMeals = useLoaderData();
+
+  const [isLargerThan1000] = useMediaQuery("(max-width: 1000px)");
+  const [isLargerThan710] = useMediaQuery("(max-width: 710px)");
 
   return (
     <>
@@ -22,13 +26,24 @@ const HomePage = () => {
         }}
       >
         <Header />
-        <MainHeading>Popular Meals</MainHeading>
+        <MainHeading>
+          Popular <span style={{ color: "rgb(211,28,39)" }}>Meals</span>
+        </MainHeading>
         <PopFoods popMeals={popMeals} />
-        <PopFoods popMeals={popMeals} />
-        <MainHeading>Why Hungry?</MainHeading>
+        {isLargerThan1000 ? "" : <PopFoods popMeals={popMeals} />}
+        <MainHeading>
+          Why <span style={{ color: "rgb(211,28,39)" }}>Hungry?</span>
+        </MainHeading>
         <WhyUs />
         <Testimonials />
-        <Flex justifyContent={"space-around"} mt={"2rem"}>
+        <MainHeading>
+          Visit our <span style={{ color: "rgb(211,28,39)" }}>Blog!</span>
+        </MainHeading>
+        <Flex
+          justifyContent={"space-around"}
+          mt={"2rem"}
+          flexDir={isLargerThan710 ? "column" : "row"}
+        >
           <Blog />
           <Blog />
           <Blog />

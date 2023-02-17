@@ -22,6 +22,7 @@ import CartPreview from "../checkoutPage/CartPreview";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../store";
+import { useMediaQuery } from "@chakra-ui/react";
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -36,6 +37,14 @@ const NavBar = () => {
     dispatch(authActions.logOut());
     navigate("/");
   };
+
+  const [isLargerThan1450] = useMediaQuery("(max-width: 1450px)");
+  const [isLargerThan1120] = useMediaQuery("(max-width: 1120px)");
+
+  const padNav = "";
+
+  if (isLargerThan1450) {
+  }
 
   return (
     <Box>
@@ -70,7 +79,8 @@ const NavBar = () => {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
-            pr={"25rem"}
+            pr={isLargerThan1450 ? "10rem" : "25rem"}
+            // pr={isLargerThan1120 ? "0rem" : "10rem"}
             pl={"3rem"}
           >
             <Image src={logo} alt="Hungry Logo" w={"130px"} minW={"100px"} />
@@ -118,7 +128,6 @@ const NavBar = () => {
                 bg: "rgb(250,28,39)",
               }}
               href={"/register"}
-              // onClick={() => navigate("/register")}
             >
               Sign Up
             </Button>
@@ -134,6 +143,7 @@ const NavBar = () => {
 };
 
 const DesktopNav = () => {
+  const [isLargerThan1120] = useMediaQuery("(mam-width: 1120px)");
   const linkColor = useColorModeValue("gray.600", "gray.200");
 
   return (
@@ -143,8 +153,8 @@ const DesktopNav = () => {
           <Link
             p={6}
             href={navItem.href ?? "#"}
-            fontSize={"md"}
-            fontWeight={600}
+            fontSize={isLargerThan1120 ? "1rem" : "1.2rem"}
+            fontWeight={500}
             color={linkColor}
             _hover={{
               textDecoration: "none",

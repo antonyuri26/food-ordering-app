@@ -6,11 +6,13 @@ import { MdCheckCircle } from "react-icons/md";
 
 import { List, ListItem, ListIcon } from "@chakra-ui/react";
 import logo from "../../assets/images/Logo_hungry.png";
+import { useMediaQuery } from "@chakra-ui/react";
 
 export default function About() {
+  const [isLargerThan1200] = useMediaQuery("(max-width: 1200px)");
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOODLE_MAPS_API_KEY,
-    // googleMapsApiKey: "AIzaSyAlIIJ4LjGaLSgRKFJu_BltkkoCw6M4sCo",
   });
 
   if (!isLoaded) {
@@ -34,13 +36,18 @@ export default function About() {
         marginTop={"2.5rem"}
       >
         <Text fontSize={"4xl"}>About Us</Text>
-        <Text fontSize={"l"} my={"2rem"}>
+        <Text fontSize={"l"} my={"2rem"} textAlign={"justify"}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat
           autem voluptatem mollitia quam tenetur, commodi totam eligendi
           repudiandae laboriosam? Eius quaerat totam neque doloribus nostrum
           aperiam nisi quam repellat aliquid!
         </Text>
-        <Box w={"100%"} display={"flex"} mb={"2rem"}>
+        <Box
+          w={"100%"}
+          display={"flex"}
+          mb={"2rem"}
+          flexDir={isLargerThan1200 ? "column" : "row"}
+        >
           <Map />
           <Box
             marginLeft={"2rem"}

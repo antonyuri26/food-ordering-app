@@ -9,8 +9,9 @@ import {
   Stack,
   Avatar,
   useColorModeValue,
-  Image,
 } from "@chakra-ui/react";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Blog() {
   return (
@@ -33,7 +34,7 @@ export default function Blog() {
           mb={6}
           pos={"relative"}
         >
-          <Image src={mealImage1} layout={"fill"} />
+          <LazyLoadImage src={mealImage1} layout={"fill"} loading="lazy" />
         </Box>
         <Stack>
           <Text
