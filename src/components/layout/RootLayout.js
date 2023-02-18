@@ -13,7 +13,6 @@ const RootLayout = () => {
           <Outlet />
         </main>
         <Footer />
-        //{" "}
       </Flex>
     </>
   );

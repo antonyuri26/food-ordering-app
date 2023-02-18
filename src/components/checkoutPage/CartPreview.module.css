@@ -1,8 +1,8 @@
 .notification {
   background-color: rgb(211, 28, 39);
   border-radius: 50%;
-  padding: 3px;
-  padding-left: 3.5px;
-  font-size: 9px;
+  padding: 4px;
+  /* padding-left: 3.5px; */
+  font-size: 11px;
   color: white;
 }

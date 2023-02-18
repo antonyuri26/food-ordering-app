@@ -65,8 +65,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Container
-        maxW="95%"
-        mt={"2.2%"}
+        maxW="100%"
         style={{
           borderRadius: "10px 10px 0 0",
           paddingLeft: "0",

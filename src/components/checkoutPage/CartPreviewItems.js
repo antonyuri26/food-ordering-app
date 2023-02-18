@@ -31,7 +31,11 @@ const CartPreviewItems = () => {
   return (
     <>
       {addedItem.items.map((item) => (
-        <div className={classes.row} key={item.id}>
+        <div
+          className={classes.row}
+          key={item.id}
+          style={{ paddingLeft: "5px", paddingRight: "5px" }}
+        >
           <div className={classes.icon}>
             <IconContext.Provider
               value={{ style: { verticalAlign: "middle", color: "red" } }}

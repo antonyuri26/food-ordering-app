@@ -39,9 +39,6 @@ const NavBar = () => {
   };
 
   const [isLargerThan1450] = useMediaQuery("(max-width: 1450px)");
-  const [isLargerThan1120] = useMediaQuery("(max-width: 1120px)");
-
-  const padNav = "";
 
   if (isLargerThan1450) {
   }
@@ -104,7 +101,7 @@ const NavBar = () => {
             <Button
               as={"a"}
               display={{ base: "none", md: "inline-flex" }}
-              fontSize={"sm"}
+              fontSize={"md"}
               fontWeight={600}
               color={"white"}
               bg={"rgb(211,28,39)"}
@@ -120,7 +117,7 @@ const NavBar = () => {
             <Button
               as={"a"}
               display={{ base: "none", md: "inline-flex" }}
-              fontSize={"sm"}
+              fontSize={"md"}
               fontWeight={600}
               color={"white"}
               bg={"rgb(211,28,39)"}
@@ -153,7 +150,7 @@ const DesktopNav = () => {
           <Link
             p={6}
             href={navItem.href ?? "#"}
-            fontSize={isLargerThan1120 ? "1rem" : "1.2rem"}
+            fontSize={isLargerThan1120 ? "1rem" : "1.3rem"}
             fontWeight={500}
             color={linkColor}
             _hover={{

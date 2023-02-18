@@ -7,7 +7,7 @@ import { useMediaQuery } from "@chakra-ui/react";
 export default function Header() {
   const [isLargerThan1040] = useMediaQuery("(max-width: 1040px)");
   const [isLargerThan900] = useMediaQuery("(max-width: 900px)");
-  const [isLargerThan710] = useMediaQuery("(max-width: 710px)");
+  // const [isLargerThan710] = useMediaQuery("(max-width: 710px)");
   const [isLargerThan590] = useMediaQuery("(max-width: 590px)");
   const [isLargerThan450] = useMediaQuery("(max-width: 450px)");
 
@@ -16,7 +16,7 @@ export default function Header() {
       <Flex
         w={"500px"}
         h={isLargerThan1040 ? "400px" : "600px"}
-        h={isLargerThan710 ? "300px" : "400px"}
+        // h={isLargerThan710 ? "300px" : "400px"}
         marginLeft={isLargerThan1040 ? "3rem" : "15rem"}
         flexDir={"column"}
         justifyContent={"center"}

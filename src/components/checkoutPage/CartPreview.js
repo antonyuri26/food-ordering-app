@@ -55,7 +55,7 @@ function CartPreview() {
                 value={{
                   color: "rgb(211,28,39)",
                   className: "global-class-name",
-                  size: "30px",
+                  size: "40px",
                   style: { verticalAlign: "middle" },
                 }}
               >
@@ -64,9 +64,13 @@ function CartPreview() {
             </Button>
           </PopoverTrigger>
           <Portal>
-            <PopoverContent w={"35rem"}>
+            <PopoverContent
+              w={"45rem"}
+              paddingLeft={"5px"}
+              paddingRight={"5px"}
+            >
               <PopoverHeader display={"flex"} justifyContent={"flex-start"}>
-                <Text fontSize="xl">Shopping Bag</Text>
+                <Text fontSize="2xl">Shopping Bag</Text>
               </PopoverHeader>
               <PopoverCloseButton />
               <PopoverBody textAlign={"center"}>
@@ -78,9 +82,9 @@ function CartPreview() {
                   mt={4}
                   colorScheme="red"
                   variant="outline"
-                  onClick={clearCartHandler}
                   marginBottom={"15px"}
                   marginRight={"10px"}
+                  onClick={clearCartHandler}
                 >
                   Clear Cart
                 </Button>
