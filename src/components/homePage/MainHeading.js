@@ -1,9 +1,7 @@
 import React from "react";
 import { Heading } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
 
 const MainHeading = (props) => {
-  const [isLargerThan710] = useMediaQuery("(max-width: 710px)");
   return (
     <Heading
       bg={"rgb(224,217,217)"}

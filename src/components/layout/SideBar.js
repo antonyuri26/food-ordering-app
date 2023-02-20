@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import { Link as ReactLink } from "react-router-dom";
-import { useMediaQuery } from "@chakra-ui/react";
 
 const LinkItems = [
   { name: "Beef", url: "beef" },
@@ -146,8 +145,6 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const [isLargerThan600] = useMediaQuery("(max-width: 600px)");
-
   return (
     <Flex
       // ml={{ base: 0, md: 60 }}
