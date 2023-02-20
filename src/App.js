@@ -7,7 +7,7 @@ import { ChakraProvider, Container } from "@chakra-ui/react";
 
 import HomePage from "./components/homePage/HomePage";
 // import MenuPage from "./components/menuPage/MenuPage";
-import About from "./components/aboutPage/About";
+// import About from "./components/aboutPage/About";
 import Contact from "./components/contactPage/Contact";
 import ErrorPage from "./components/errorPage/ErrorPage";
 import RootLayout from "./components/layout/RootLayout";
@@ -20,8 +20,8 @@ import { loader as popMealsLoader } from "./components/homePage/HomePage";
 import OrderConfirmation from "./components/confirmationPage/OrderConfirmation";
 
 const MenuPage = lazy(() => import("./components/menuPage/MenuPage"));
-
 const MealsPage = lazy(() => import("./components/mealsPage/MealsPage"));
+const About = lazy(() => import("./components/aboutPage/About"));
 
 //creating routes
 const router = createBrowserRouter([
@@ -52,8 +52,18 @@ const router = createBrowserRouter([
         ),
         loader: mealsLoader,
       },
-      { path: "/about", element: <About /> },
-      { path: "/contact", element: <Contact /> },
+      {
+        path: "/about",
+        element: (
+          <Suspense>
+            <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
       { path: "/register", element: <Register /> },
       { path: "/checkout", element: <Checkout /> },
       { path: "/confirmation", element: <OrderConfirmation /> },

@@ -39,6 +39,7 @@ const PopFoods = (props) => {
       <Flex
         justifyContent={"center"}
         flexDir={isLargerThan990 ? "column" : "row"}
+        mb={"3rem"}
       >
         {modalIsOpen && (
           <Modal onClose={() => setModalIsOpen(false)}>

@@ -33,7 +33,7 @@ export default function About() {
         justifyContent={"center"}
         alignItems={"center"}
         margin={"0 auto"}
-        marginTop={"2.5rem"}
+        marginTop={"8.5rem"}
       >
         <Text fontSize={"4xl"}>About Us</Text>
         <Text fontSize={"l"} my={"2rem"} textAlign={"justify"}>

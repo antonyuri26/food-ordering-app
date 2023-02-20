@@ -42,8 +42,8 @@ const MealsList = (props) => {
         h={"80%"}
         rowGap={"1rem"}
         columnGap={"0.5rem"}
-        marginY={"1rem"}
-        marginLeft={"3rem"}
+        marginY={"7rem"}
+        marginLeft={"5rem"}
       >
         {modalIsOpen && (
           <Modal onClose={() => setModalIsOpen(false)}>

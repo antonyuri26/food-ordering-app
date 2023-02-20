@@ -56,6 +56,9 @@ const NavBar = () => {
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
         style={{ borderRadius: "7px 7px 0 0" }}
+        position={"fixed"}
+        w={"100%"}
+        zIndex={"100"}
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
@@ -172,6 +175,7 @@ const MobileNav = () => {
       bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
+      mt={"6rem"}
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />

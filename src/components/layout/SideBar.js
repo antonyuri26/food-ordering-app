@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import { Link as ReactLink } from "react-router-dom";
+import { useMediaQuery } from "@chakra-ui/react";
 
 const LinkItems = [
   { name: "Beef", url: "beef" },
@@ -37,6 +38,7 @@ export default function SideBar({ children }) {
       bg={useColorModeValue("white.100", "gray.900")}
       w={"14rem"}
       paddingLeft={"3rem"}
+      mt={"6rem"}
     >
       <SidebarContent
         onClose={() => onClose}
@@ -144,14 +146,17 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const [isLargerThan600] = useMediaQuery("(max-width: 600px)");
+
   return (
     <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 24 }}
+      // ml={{ base: 0, md: 60 }}
+      ml={"-17px"}
+      mr={"-50px"}
+      // px={{ base: 0, md: 24 }}
       height="20"
       alignItems="center"
       bg={useColorModeValue("rgb(224,217,217)", "gray.900")}
-      borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="flex-start"
       {...rest}

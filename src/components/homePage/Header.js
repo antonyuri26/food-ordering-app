@@ -16,7 +16,6 @@ export default function Header() {
       <Flex
         w={"500px"}
         h={isLargerThan1040 ? "400px" : "600px"}
-        // h={isLargerThan710 ? "300px" : "400px"}
         marginLeft={isLargerThan1040 ? "3rem" : "15rem"}
         flexDir={"column"}
         justifyContent={"center"}

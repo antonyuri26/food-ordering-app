@@ -37,6 +37,7 @@ function CartPreview() {
       closeOnBlur={false}
       placement="bottom"
       initialFocusRef={initRef}
+      isLazy
     >
       {({ isOpen, onClose }) => (
         <>
@@ -68,6 +69,9 @@ function CartPreview() {
               w={"45rem"}
               paddingLeft={"5px"}
               paddingRight={"5px"}
+              mt={"15px"}
+              style={{ overflowY: "auto" }}
+              h={"800px"}
             >
               <PopoverHeader display={"flex"} justifyContent={"flex-start"}>
                 <Text fontSize="2xl">Shopping Bag</Text>

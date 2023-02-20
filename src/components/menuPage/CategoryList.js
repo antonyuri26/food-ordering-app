@@ -12,7 +12,8 @@ const CategoryList = (props) => {
       h={"80%"}
       rowGap={"1rem"}
       columnGap={"0.5rem"}
-      marginY={"1rem"}
+      marginY={"7rem"}
+      marginLeft={"1rem"}
     >
       {props.categories.map((category) => (
         <Image

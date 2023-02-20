@@ -34,7 +34,7 @@ export default function Blog() {
           mb={6}
           pos={"relative"}
         >
-          <LazyLoadImage src={mealImage1} layout={"fill"} loading="lazy" />
+          <LazyLoadImage src={mealImage1} layout={"fill"} />
         </Box>
         <Stack>
           <Text
