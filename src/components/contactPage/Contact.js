@@ -46,7 +46,7 @@ const Contact = () => {
         m={{ base: 5, md: 16, lg: 10 }}
         p={{ base: 5, lg: 16 }}
       >
-        <Box mt={"3rem"}>
+        <Box mt={"6rem"}>
           <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
             <Heading
               fontSize={{

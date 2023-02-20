@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../store";
 import { useMediaQuery } from "@chakra-ui/react";
+import { Link as ReactRouter } from "react-router-dom";
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -38,13 +39,9 @@ const NavBar = () => {
     navigate("/");
   };
 
-  const [isLargerThan1450] = useMediaQuery("(max-width: 1450px)");
-
-  if (isLargerThan1450) {
-  }
-
   return (
-    <Box>
+    // <Box id="test">
+    <>
       <Flex
         bg={useColorModeValue("rgb(224,217,217)", "gray.600")}
         color={useColorModeValue("gray.600", "white")}
@@ -79,11 +76,18 @@ const NavBar = () => {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
-            pr={isLargerThan1450 ? "10rem" : "25rem"}
-            // pr={isLargerThan1120 ? "0rem" : "10rem"}
-            pl={"3rem"}
+            flexGrow={"0.5"}
           >
-            <Image src={logo} alt="Hungry Logo" w={"130px"} minW={"100px"} />
+            <Link as={ReactRouter} to="/">
+              <Image
+                src={logo}
+                alt="Hungry Logo"
+                w={"130px"}
+                minW={"100px"}
+                cursor={"pointer"}
+                ml={"2rem"}
+              />
+            </Link>
           </Text>
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -138,12 +142,13 @@ const NavBar = () => {
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
-    </Box>
+      {/* // </Box> */}
+    </>
   );
 };
 
 const DesktopNav = () => {
-  const [isLargerThan1120] = useMediaQuery("(mam-width: 1120px)");
+  const [isLargerThan1120] = useMediaQuery("(max-width: 1120px)");
   const linkColor = useColorModeValue("gray.600", "gray.200");
 
   return (

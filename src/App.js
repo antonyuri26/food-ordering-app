@@ -3,17 +3,14 @@ import Fonts from "./theme/Fonts";
 import theme from "./theme/theme";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import { ChakraProvider, Container } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import HomePage from "./components/homePage/HomePage";
-// import MenuPage from "./components/menuPage/MenuPage";
-// import About from "./components/aboutPage/About";
 import Contact from "./components/contactPage/Contact";
 import ErrorPage from "./components/errorPage/ErrorPage";
 import RootLayout from "./components/layout/RootLayout";
 import Register from "./components/auth/Register";
 import Checkout from "./components/checkoutPage/Checkout";
-// import MealsPage from "./components/mealsPage/MealsPage";
 
 import { loader as mealsLoader } from "./components/mealsPage/MealsPage";
 import { loader as popMealsLoader } from "./components/homePage/HomePage";
@@ -74,17 +71,8 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Container
-        maxW="100%"
-        style={{
-          borderRadius: "10px 10px 0 0",
-          paddingLeft: "0",
-          paddingRight: "0",
-        }}
-      >
-        <Fonts />
-        <RouterProvider router={router} />
-      </Container>
+      <Fonts />
+      <RouterProvider router={router} />
     </ChakraProvider>
   );
 }

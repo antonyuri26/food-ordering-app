@@ -51,7 +51,7 @@ const PopFoods = (props) => {
             <Box
               role={"group"}
               p={6}
-              maxW={"330px"}
+              maxW={isLargerThan990 ? "80%" : "330px"}
               w={"full"}
               bg={("white", "rgb(224,217,217)")}
               boxShadow={"2xl"}
@@ -64,7 +64,7 @@ const PopFoods = (props) => {
                 rounded={"lg"}
                 mt={-12}
                 pos={"relative"}
-                height={"230px"}
+                height={"50%"}
                 _after={{
                   transition: "all .3s ease",
                   content: '""',
@@ -85,8 +85,8 @@ const PopFoods = (props) => {
               >
                 <LazyLoadImage
                   rounded={"lg"}
-                  height={230}
-                  width={282}
+                  height={isLargerThan990 ? "100%" : 230}
+                  width={isLargerThan990 ? "100%" : 282}
                   objectFit={"cover"}
                   src={meal.image}
                   _hover={{
@@ -102,9 +102,7 @@ const PopFoods = (props) => {
                   color={"gray.500"}
                   fontSize={"sm"}
                   textTransform={"uppercase"}
-                >
-                  Brand
-                </Text>
+                ></Text>
                 <Heading fontSize={"xl"} fontFamily={"body"} fontWeight={500}>
                   {meal.title}
                 </Heading>

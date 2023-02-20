@@ -7,7 +7,6 @@ import { useMediaQuery } from "@chakra-ui/react";
 export default function Header() {
   const [isLargerThan1040] = useMediaQuery("(max-width: 1040px)");
   const [isLargerThan900] = useMediaQuery("(max-width: 900px)");
-  // const [isLargerThan710] = useMediaQuery("(max-width: 710px)");
   const [isLargerThan590] = useMediaQuery("(max-width: 590px)");
   const [isLargerThan450] = useMediaQuery("(max-width: 450px)");
 
@@ -15,13 +14,12 @@ export default function Header() {
     <div className={classes.hero_container}>
       <Flex
         w={"500px"}
-        h={isLargerThan1040 ? "400px" : "600px"}
         marginLeft={isLargerThan1040 ? "3rem" : "15rem"}
         flexDir={"column"}
         justifyContent={"center"}
       >
-        <Box w={isLargerThan900 ? "50%" : "100%"}>
-          <Text fontSize={isLargerThan900 ? "3xl" : "5xl"}>
+        <Box w={isLargerThan900 ? "60%" : "100%"} mt={"3rem"}>
+          <Text fontSize={isLargerThan900 ? "4xl" : "5xl"}>
             It's not <span className={classes.red_heading}>just Food,</span>{" "}
             It's an <span className={classes.red_heading}>Experience!</span>
           </Text>

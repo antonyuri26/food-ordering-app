@@ -118,7 +118,12 @@ const cartSlice = createSlice({
 
     clearCart() {
       window.localStorage.removeItem("tempOrder");
-      return cartInitialState;
+
+      return {
+        items: [],
+        totalPrice: 0,
+        totalQty: 0,
+      };
     },
 
     //fetching order from localstorage

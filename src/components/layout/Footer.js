@@ -96,6 +96,7 @@ const Footer = () => {
       borderTop={1}
       borderStyle={"solid"}
       borderColor={useColorModeValue("gray.200", "gray.900")}
+      minW={"750px"}
     >
       <Container as={Stack} maxW={"92%"} py={10}>
         <SimpleGrid
