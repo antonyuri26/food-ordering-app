@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Overview
+
+This Food Ordering App is a web-based application that allows users to browse and order a wide range of meals. The app is built using React.js and Redux as state management, providing users with a seamless and responsive experience. The interface is designed using Chakra UI to ensure that the app is user-friendly and intuitive. All meals are fetch from TheMealDB API and the orders are stored in a Realtime Database powered by Firebase.  
+Technologies used: HTML, CSS, React.JS, Redux, Chakra UI, Rest API, Firebase
+
+Live Demo: https://food-ordering-app-77b44f.netlify.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
