@@ -9,7 +9,13 @@ const Backdrop = (props) => {
 const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
-      <GrClose onClick={props.onClose} cursor={"pointer"} />
+      <span className={classes.close_icon}>
+        <GrClose
+          onClick={props.onClose}
+          cursor={"pointer"}
+          // className={classes.close_icon}
+        />
+      </span>
       <div className={classes.content}>{props.children}</div>
     </div>
   );

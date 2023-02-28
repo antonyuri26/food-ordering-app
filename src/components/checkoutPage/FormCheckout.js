@@ -1,9 +1,12 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import { Button, Flex, Text } from "@chakra-ui/react";
+
 import { Form, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
+
 import classes from "./FormCheckout.module.css";
+
 import {
   FaRegUser,
   FaRegEnvelope,
@@ -17,6 +20,7 @@ import {
 
 const FormCheckout = () => {
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const fullName = useRef();
   const email = useRef();
@@ -58,9 +62,10 @@ const FormCheckout = () => {
       console.log(data);
 
       if (!response.ok) {
-        throw new Error("Error Ehile trying submitt your order");
+        throw new Error("Error while trying submitt your order");
       } else {
         navigate("/confirmation");
+        setIsSubmitting(false);
       }
     } catch (error) {
       console.log(Error);
@@ -68,6 +73,7 @@ const FormCheckout = () => {
   }
 
   const orderSubmitHandler = (event) => {
+    setIsSubmitting(true);
     event.preventDefault();
 
     const orderDetails = {
@@ -95,7 +101,7 @@ const FormCheckout = () => {
   };
 
   return (
-    <div className={classes.col_50}>
+    <div className={classes.col_50} style={{ marginTop: "5.3rem" }}>
       <div className={classes.container}>
         <Form onSubmit={orderSubmitHandler}>
           <div className={classes.row}>
@@ -164,8 +170,13 @@ const FormCheckout = () => {
               />
 
               <div className={classes.row}>
-                <div className={classes.col_25}>
-                  <label htmlFor="state">State</label>
+                <div
+                  className={classes.col_35}
+                  style={{ paddingRight: "0.7rem" }}
+                >
+                  <label htmlFor="state" className={classes.icon_container}>
+                    State
+                  </label>
                   <input
                     type="text"
                     id="state"
@@ -175,8 +186,10 @@ const FormCheckout = () => {
                     required
                   />
                 </div>
-                <div className={classes.col_25}>
-                  <label htmlFor="zip">Postcode</label>
+                <div className={classes.col_35}>
+                  <label htmlFor="zip" className={classes.icon_container}>
+                    Postcode
+                  </label>
                   <input
                     type="text"
                     id="zip"
@@ -194,7 +207,7 @@ const FormCheckout = () => {
                 Payment
               </Text>
 
-              <div>
+              <div className={classes.cards}>
                 <label htmlFor="fname">Accepted Cards</label>
               </div>
               <div className={classes.icon_cards_container}>
@@ -213,7 +226,9 @@ const FormCheckout = () => {
               </div>
 
               <div>
-                <label htmlFor="cname">Name on Card</label>
+                <label htmlFor="cname" className={classes.icon_container}>
+                  Name on Card
+                </label>
               </div>
               <input
                 type="text"
@@ -223,7 +238,9 @@ const FormCheckout = () => {
                 ref={nameCard}
                 required
               />
-              <label htmlFor="ccnum">Credit card number</label>
+              <label htmlFor="ccnum" className={classes.icon_container}>
+                Credit card number
+              </label>
               <input
                 type="text"
                 id="ccnum"
@@ -232,7 +249,9 @@ const FormCheckout = () => {
                 ref={creditCardNumber}
                 required
               />
-              <label htmlFor="expmonth">Exp Month</label>
+              <label htmlFor="expmonth" className={classes.icon_container}>
+                Exp Month
+              </label>
               <input
                 type="text"
                 id="expmonth"
@@ -243,8 +262,13 @@ const FormCheckout = () => {
               />
 
               <div className={classes.row}>
-                <div className={classes.col_50}>
-                  <label htmlFor="expyear">Exp Year</label>
+                <div
+                  className={classes.col_35}
+                  style={{ paddingRight: "0.7rem" }}
+                >
+                  <label htmlFor="expyear" className={classes.icon_container}>
+                    Exp Year
+                  </label>
                   <input
                     type="text"
                     id="expyear"
@@ -254,8 +278,10 @@ const FormCheckout = () => {
                     required
                   />
                 </div>
-                <div className={classes.col_50}>
-                  <label htmlFor="cvv">CVV</label>
+                <div className={classes.col_35}>
+                  <label htmlFor="cvv" className={classes.icon_container}>
+                    CVV
+                  </label>
                   <input
                     type="text"
                     id="cvv"
@@ -278,13 +304,18 @@ const FormCheckout = () => {
             >
               Back to Menu
             </Button>
-            <Button
-              colorScheme="green"
-              type="submit"
-              value="Continue to checkout"
-            >
-              Confirm Order
-            </Button>
+            {isSubmitting ? (
+              <Button isLoading loadingText="Submitting" colorScheme="green" />
+            ) : (
+              <Button
+                colorScheme="green"
+                type="submit"
+                value="Continue to checkout"
+                loadingText="Submitting"
+              >
+                Confirm Order
+              </Button>
+            )}
           </Flex>
         </Form>
       </div>

@@ -18,6 +18,8 @@ import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import logo from "../../assets/images/Logo_hungry.png";
 
+import { useMediaQuery } from "@chakra-ui/react";
+
 const Logo = (props) => {
   return <Image src={logo} alt="Hungry Logo" w={"130px"} minW={"100px"} />;
 };
@@ -88,6 +90,8 @@ const deliveryLinks2 = [
 ];
 
 const Footer = () => {
+  const [isLargerThan480] = useMediaQuery("(max-width: 480px)");
+
   return (
     <Box
       bg={useColorModeValue("rgb(224,217,217)", "gray.900")}
@@ -97,13 +101,19 @@ const Footer = () => {
       borderStyle={"solid"}
       borderColor={useColorModeValue("gray.200", "gray.900")}
       minW={"750px"}
+      justifyContent={"center"}
     >
-      <Container as={Stack} maxW={"92%"} py={10}>
+      <Container
+        as={Stack}
+        maxW={"92%"}
+        py={10}
+        alignItems={isLargerThan480 ? "center" : ""}
+      >
         <SimpleGrid
           templateColumns={{ sm: "2fr 1fr", md: "2fr 1.3fr 1fr 1fr 2fr" }}
           spacing={8}
         >
-          <Stack spacing={6}>
+          <Stack spacing={6} alignItems={"center"}>
             <Box>
               <Logo color={useColorModeValue("gray.700", "white")} />
             </Box>
@@ -122,7 +132,7 @@ const Footer = () => {
               </SocialButton>
             </Stack>
           </Stack>
-          <Stack spacing={2}>
+          <Stack spacing={2} alignItems={isLargerThan480 ? "center" : ""}>
             <ListHeader>Delivery Time</ListHeader>
 
             {deliveryLinks1.map((link) => (
@@ -147,34 +157,45 @@ const Footer = () => {
               </Link>
             ))}
           </Stack>
-          <Stack align={"flex-start"}>
-            <ListHeader>Company</ListHeader>
-            {companyLinks.map((link) => (
-              <Link
-                href={link.href}
-                style={{ textDecoration: "none" }}
-                _hover={linkStyle}
-                key={link.title}
-              >
-                {link.title}
-              </Link>
-            ))}
-          </Stack>
-          <Stack align={"flex-start"}>
-            <ListHeader>Support</ListHeader>
+          {isLargerThan480 ? (
+            ""
+          ) : (
+            <Stack align={"flex-start"}>
+              <ListHeader>Company</ListHeader>
+              {companyLinks.map((link) => (
+                <Link
+                  href={link.href}
+                  style={{ textDecoration: "none" }}
+                  _hover={linkStyle}
+                  key={link.title}
+                >
+                  {link.title}
+                </Link>
+              ))}
+            </Stack>
+          )}
+          {isLargerThan480 ? (
+            ""
+          ) : (
+            <Stack align={"flex-start"}>
+              <ListHeader>Support</ListHeader>
 
-            {supportLinks.map((link) => (
-              <Link
-                href={link.href}
-                style={{ textDecoration: "none" }}
-                _hover={linkStyle}
-                key={link.title}
-              >
-                {link.title}
-              </Link>
-            ))}
-          </Stack>
-          <Stack align={"flex-start"}>
+              {supportLinks.map((link) => (
+                <Link
+                  href={link.href}
+                  style={{ textDecoration: "none" }}
+                  _hover={linkStyle}
+                  key={link.title}
+                >
+                  {link.title}
+                </Link>
+              ))}
+            </Stack>
+          )}
+          <Stack
+            align={"flex-start"}
+            alignItems={isLargerThan480 ? "center" : ""}
+          >
             <ListHeader>Stay up to date</ListHeader>
             <Stack direction={"row"}>
               <Input

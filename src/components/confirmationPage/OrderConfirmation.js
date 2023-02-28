@@ -17,8 +17,8 @@ const OrderConfirmation = () => {
           <Text fontSize={"3xl"} alignSelf={"center"}>
             Thank you for your ordering!
           </Text>
-          <Text fontSize={"xl"}>{`Order Number: HG${Math.floor(
-            Math.random() + 10
+          <Text fontSize={"xl"}>{`Order Number: HG${Math.trunc(
+            Math.random() * 102
           )}`}</Text>
           <Image src={imgConfirm} />
           <img

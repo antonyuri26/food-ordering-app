@@ -47,7 +47,8 @@ const PopFoods = (props) => {
           </Modal>
         )}
         {props.popMeals.map((meal) => (
-          <Center py={12}>
+          <Center py={12} key={Math.random()}>
+            {/* replace math.random() for key.id */}
             <Box
               role={"group"}
               p={6}
@@ -59,6 +60,7 @@ const PopFoods = (props) => {
               pos={"relative"}
               zIndex={1}
               mr={"1rem"}
+              cursor={"pointer"}
             >
               <Box
                 rounded={"lg"}
@@ -87,14 +89,13 @@ const PopFoods = (props) => {
                   rounded={"lg"}
                   height={isLargerThan990 ? "100%" : 230}
                   width={isLargerThan990 ? "100%" : 282}
-                  objectFit={"cover"}
+                  // objectFit={"cover"}
                   src={meal.image}
                   _hover={{
                     transform: "scale(1.05)",
                     transition: "transform .2s",
                   }}
                   onClick={() => mealDetailHandler(meal)}
-                  cursor={"pointer"}
                 />
               </Box>
               <Stack pt={10} align={"center"}>

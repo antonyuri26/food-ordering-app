@@ -61,7 +61,7 @@ export async function loader() {
   );
 
   const data = await res.json();
-  console.log(data.meals);
+  // console.log(data.meals);
   const mealList = data.meals.map((item) => {
     return {
       title: item.strMeal.substring(0, 36),

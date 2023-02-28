@@ -17,7 +17,6 @@ const Checkout = () => {
     <div
       className={classes.row}
       style={{
-        marginTop: "5.8rem",
         marginBottom: "0px",
         // background: "rgb(250,250,250)",
         background:

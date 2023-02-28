@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
   ListIcon,
+  Divider,
   Button,
 } from "@chakra-ui/react";
 import { MdCheckCircle, MdMinimize } from "react-icons/md";
@@ -28,14 +29,18 @@ const MealDetailContent = (props) => {
   const meal = props.meal;
   return (
     <>
-      <Text fontSize={"2xl"} textAlign={"center"} py={"2rem"} color={"green"}>
+      <Text fontSize={"2xl"} textAlign={"center"} py={"1rem"} color={"green"}>
         {meal[0].title}
       </Text>
 
       <Flex justifyContent={"center"}>
         <Image src={meal[0].image} w={"40%"} borderRadius="full" />
       </Flex>
-      <Box display={"flex"} justifyContent={"center"} my={"3rem"}>
+      <Divider mt={"1rem"} />
+      <Text fontSize={"xl"} mt={"1rem"}>
+        Ingredients
+      </Text>
+      <Box display={"flex"} justifyContent={"center"} my={"1rem"}>
         <Box w={"45%"}>
           <List spacing={3} textAlign={"start"}>
             {meal[0].ingredients.map((item) => (
@@ -68,8 +73,9 @@ const MealDetailContent = (props) => {
           </List>
         </Box>
       </Box>
+      <Divider my={"1rem"} />
       <Box pb={"2rem"}>
-        <Text fontSize={"xl"} textAlign={"center"} color={"green"}>
+        <Text fontSize={"xl"} textAlign={"center"} color={"red"}>
           Price: ${meal[0].price}
         </Text>
       </Box>
@@ -80,7 +86,8 @@ const MealDetailContent = (props) => {
         justifyContent={"center"}
       >
         <Button
-          color={"red"}
+          color={"white"}
+          colorScheme="red"
           onClick={() =>
             addToCartHandler({
               id: meal[0].id,
