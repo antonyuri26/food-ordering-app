@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 
 import { Form, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
@@ -101,7 +101,7 @@ const FormCheckout = () => {
   };
 
   return (
-    <div className={classes.col_50} style={{ marginTop: "5.3rem" }}>
+    <div className={classes.col_50} style={{ marginTop: "5.5rem" }}>
       <div className={classes.container}>
         <Form onSubmit={orderSubmitHandler}>
           <div className={classes.row}>

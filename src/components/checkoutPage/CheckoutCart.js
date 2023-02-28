@@ -10,7 +10,10 @@ const CheckoutCart = () => {
   const cartNotifQty = useSelector((state) => state.cart.totalQty);
 
   return (
-    <div className={classes.col_35} style={{ marginTop: "5.3rem" }}>
+    <div
+      className={classes.col_35}
+      style={{ marginTop: "5.3rem", width: "100%" }}
+    >
       <div className={classes.container}>
         <Text fontSize="3xl">Summary ({cartNotifQty}) Items</Text>
 
