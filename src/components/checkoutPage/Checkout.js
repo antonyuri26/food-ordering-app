@@ -6,6 +6,7 @@ import FormCheckout from "./FormCheckout";
 import CheckoutCart from "./CheckoutCart";
 import SignInToContinue from "../auth/SignInToContinue";
 import SignInDrawer from "../auth/SignInDrawer";
+import { Flex } from "@chakra-ui/react";
 
 const Checkout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const Checkout = () => {
   const token = useSelector((state) => state.auth.token);
 
   return (
-    <div
+    <Flex
       className={classes.row}
       style={{
         marginBottom: "0px",
@@ -31,7 +32,7 @@ const Checkout = () => {
         <SignInToContinue signInHandler={setIsOpen} />
       )}
       <CheckoutCart />
-    </div>
+    </Flex>
   );
 };
 

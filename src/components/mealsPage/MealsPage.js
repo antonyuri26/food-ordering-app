@@ -12,7 +12,7 @@ const MealsPage = () => {
   let content = <p>Found No Meals</p>;
 
   if (mealList.length) {
-    content = <MealsList meals={mealList} />;
+    content = <MealsList meals={mealList} categoryName={CategoryName} />;
   }
 
   return <MealsWrapper content={content} CategoryName={CategoryName} />;

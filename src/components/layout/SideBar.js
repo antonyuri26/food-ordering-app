@@ -13,7 +13,6 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-import { Link as ReactLink } from "react-router-dom";
 
 const LinkItems = [
   { name: "Beef", url: "beef" },
@@ -91,25 +90,18 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <Link
-          as={ReactLink}
-          to={`/menu/${link.url}`}
-          key={link.name}
-          _hover={{
-            textDecoration: "none",
-          }}
-        >
-          <NavItem icon={link.icon}>{link.name}</NavItem>
-        </Link>
+        <NavItem icon={link.icon} href={link.url} key={link.name}>
+          {link.name}
+        </NavItem>
       ))}
     </Box>
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, children, href, ...rest }) => {
   return (
     <Link
-      href="#"
+      href={`/menu/${href}`}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >

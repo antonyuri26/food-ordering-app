@@ -9,6 +9,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Flex,
 } from "@chakra-ui/react";
 import classes from "./MealsList.module.css";
 
@@ -33,7 +34,16 @@ const MealsList = (props) => {
   };
 
   return (
-    <>
+    <Flex flexDir={"column"} alignItems={"center"}>
+      <Text
+        fontSize={"xl"}
+        fontFamily={"ubuntu"}
+        color={"#4a5568"}
+        as="b"
+        mt={"7.5rem"}
+      >
+        {props.categoryName.categoryId.toUpperCase()}
+      </Text>
       <Stack
         direction="row"
         wrap={"wrap"}
@@ -42,7 +52,7 @@ const MealsList = (props) => {
         h={"80%"}
         rowGap={"1rem"}
         columnGap={"0.5rem"}
-        marginY={"7rem"}
+        marginY={"1.5rem"}
         marginLeft={"5rem"}
       >
         {modalIsOpen && (
@@ -97,7 +107,7 @@ const MealsList = (props) => {
           </Card>
         ))}
       </Stack>
-    </>
+    </Flex>
   );
 };
 
