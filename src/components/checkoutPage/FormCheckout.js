@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 
 import { Form, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";

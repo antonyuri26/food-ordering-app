@@ -6,7 +6,7 @@ import FormCheckout from "./FormCheckout";
 import CheckoutCart from "./CheckoutCart";
 import SignInToContinue from "../auth/SignInToContinue";
 import SignInDrawer from "../auth/SignInDrawer";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 const Checkout = () => {
   const [isOpen, setIsOpen] = useState(false);
